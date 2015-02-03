@@ -7,11 +7,11 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
-		<link rel="stylesheet" href="css/reveal.css" />
-		<link rel="stylesheet" href="css/theme/blood.css" id="theme" />
-		<link rel="stylesheet" href="css/codecamp.css" />
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-		<link href='http://fonts.googleapis.com/css?family=Clicker+Script' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" href="css/reveal.css" />
+		<link type="text/css" rel="stylesheet" href="css/theme/blood.css" id="theme" />
+		<link type="text/css" rel="stylesheet" href="css/codecamp.css" />
+		<link type="text/css" rel="stylesheet" href="lib/css/zenburn.css" />
+		<link href="//fonts.googleapis.com/css?family=Clicker+Script" rel="stylesheet" type="text/css" />
 		<script>var link = document.createElement("link");link.rel = 'stylesheet';link.type = 'text/css';link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';document.getElementsByTagName('head')[0].appendChild(link);</script>
 	</head>
 	<body>
@@ -43,6 +43,11 @@
 				[8.2] - Adding Further Dependencies
 				[8.3] - Further Abstraction
 				[8.4] - define() versus require()
+				[8.5] - Modularized Code
+				[8.6] - Hooking Up The New Module
+				[8.7] - On Further Abstraction
+			[9.0] - requirejs.config
+				[9.1] - Making it Manageable
 		-->
 		<div class="reveal">
 			<div class="slides">
@@ -285,11 +290,11 @@ require(["lib/jquery"], function($){
 						</ul>
 					</section>
 					<!-- [8.5] - Modularized Code -->
-					<section>
+					<section data-transition="fade">
 						<h3><code>scripts/jquery-stuff.js</code></h3>
 						<pre>
 							<code class="javascript" data-trim>
-define(["lib/jquery"], function($){
+define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
 	$(function(){
 		// Application Logic Here
 	});
@@ -298,73 +303,53 @@ define(["lib/jquery"], function($){
 						</pre>
 						<aside class="notes">
 							- Create a new file called <code>jquery-stuff.js</code>
-							- This code is not immediately executed.
+							- This code is not immediately executed. <code>require()</code> call is needed in <code>app.js</code>
 						</aside>
+					</section>
+					<!-- [8.6] - Hooking Up The New Module -->
+					<section data-transition="fade">
+						<h3><code>scripts/app.js</code></h3>
+						<pre>
+							<code class="javascript" data-trim contenteditable>
+require(["lib/jquery"], function($){
+	$(function(){
+		// Application Logic Here
+	});
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Remove the function closure argument.<br />
+							- Change the dependency from <code>&quot;lib/jquery&quot;</code>
+						</aside>
+					</section>
+					<!-- [8.7] - On Further Abstraction -->
+					<section>
+						<h3>On Further Abstraction</h3>
+						<ul>
+							<li class="fragment">Bucketing dependencies equals more maintainable code.</li>
+							<li class="fragment">Bucketed dependencies are only loaded when they're needed.</li>
+							<li class="fragment">Highly abstract architecture may not be appropriate for all projects.</li>
+							<li class="fragment">Simpler sites with little JavaScript may not be appropriate for RequireJS.</li>
+						</ul>
+					</section>
+				</section>
+				<!-- [9.0] - requirejs.config -->
+				<section>
+					<!-- [9.1] - Making it Manageable -->
+					<section>
+						<h2>Making it Manageable</h2>
+						<h3 class="fancy fragment">or</h3>
+						<h4 class="fragment"><code>requirejs.config()</code> is your friend.</h4>
+					</section>
+					<!-- [9.2] - -->
+					<section>
 					</section>
 				</section>
 			</div>
 		</div>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-		<script>
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				transition: "slide", // none/fade/slide/convex/concave/zoom
-
-				// Optional reveal.js plugins
-				dependencies:[
-					{
-						src: 'lib/js/classList.js',
-						condition: function(){
-							return !document.body.classList;
-						}
-					},
-					{
-						src: 'plugin/markdown/marked.js',
-						condition: function(){
-							return !!document.querySelector('[data-markdown]');
-						}
-					},
-					{
-						src: 'plugin/markdown/markdown.js',
-						condition: function(){
-							return !!document.querySelector('[data-markdown]');
-						}
-					},
-					{
-						src: 'plugin/highlight/highlight.js',
-						async: true,
-						condition: function(){
-							return !!document.querySelector('pre code');
-						},
-						callback: function(){
-							hljs.initHighlightingOnLoad();
-						}
-					},
-					{
-						src: 'plugin/zoom-js/zoom.js',
-						async: true
-					},
-					{
-						src: 'plugin/notes/notes.js',
-						async: true
-					}
-				]
-			});
-
-			// window.addEventListener("mousedown", handleClick, false);
-			// window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
-
-			// function handleClick(e){
-			// 	e.preventDefault();
-			// 	if(e.button === 0) Reveal.next();
-			// 	if(e.button === 2) Reveal.prev();
-			// }
-		</script>
+		<script>Reveal.initialize({controls: true,progress: true,history: true,center: true,transition: "slide",dependencies:[{src: 'lib/js/classList.js',condition: function(){return !document.body.classList;}},{src: 'plugin/markdown/marked.js',condition: function(){return !!document.querySelector('[data-markdown]');}},{src: 'plugin/markdown/markdown.js',condition: function(){return !!document.querySelector('[data-markdown]');}},{src: 'plugin/highlight/highlight.js',async: true,condition: function(){return !!document.querySelector('pre code');},callback: function(){hljs.initHighlightingOnLoad();}},{src: 'plugin/zoom-js/zoom.js',async: true},{src: 'plugin/notes/notes.js',async: true}]});</script>
 	</body>
 </html>
