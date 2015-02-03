@@ -12,7 +12,7 @@
 		<link type="text/css" rel="stylesheet" href="css/codecamp.css" />
 		<link type="text/css" rel="stylesheet" href="lib/css/zenburn.css" />
 		<link href="//fonts.googleapis.com/css?family=Clicker+Script" rel="stylesheet" type="text/css" />
-		<script>var link = document.createElement("link");link.rel = 'stylesheet';link.type = 'text/css';link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';document.getElementsByTagName('head')[0].appendChild(link);</script>
+		<script>var link=document.createElement("link");link.rel='stylesheet';link.type='text/css';link.href=window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' :'css/print/paper.css';document.getElementsByTagName('head')[0].appendChild(link);</script>
 	</head>
 	<body>
 		<!--
@@ -48,6 +48,8 @@
 				[8.7] - On Further Abstraction
 			[9.0] - requirejs.config
 				[9.1] - Making it Manageable
+				[9.2] - baseUrl
+				[9.3] - paths
 		-->
 		<div class="reveal">
 			<div class="slides">
@@ -341,15 +343,59 @@ require(["lib/jquery"], function($){
 						<h2>Making it Manageable</h2>
 						<h3 class="fancy fragment">or</h3>
 						<h4 class="fragment"><code>requirejs.config()</code> is your friend.</h4>
+						<aside class="notes">
+							- <code>requirejs.config()</code> takes an object with configuration key/value pairs.
+						</aside>
 					</section>
-					<!-- [9.2] - -->
+					<!-- [9.2] - baseUrl -->
+					<section data-transition="fade">
+						<h2><code>baseUrl</code></h2>
+						<h4><code>scripts/app.js</code></h4>
+						<pre>
+							<code class="html" data-trim>
+&lt;script src=&quot;scripts/require.js&quot; data-main=&quot;scripts/app&quot;&gt;&lt;/script&gt;
+							</code>
+						</pre>
+						<pre class="fragment">
+							<code class="javascript" data-trim>
+// Configuration Settings
+requirejs.config({
+	"baseUrl": "scripts/some/other/path"
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- <code>data-main</code> script determines the root URL. <code>baseUrl</code> just allows us to override that.
+						</aside>
+					</section>
+					<!-- [9.3] - paths -->
+					<section data-transition="fade">
+						<h2><code>paths</code></h2>
+						<h4><code>scripts/app.js</code></h4>
+						<pre>
+							<code class="javascript" data-trim contenteditable>
+// Configuration Settings
+requirejs.config({
+	"paths":{
+		"jquery": "lib/jquery.min"
+	}
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Explain how module names can be remapped to friendlier strings (e.g., <code>&quot;jquery&quot;</code> instead of <code>&quot;lib/jquery.min&quot;</code><br />
+						</aside>
+					</section>
+					<!-- [9.4] What About CDN Resources? -->
 					<section>
+						<h2>What About CDNs?</h2>
+						<img class="fragment" src="images/angry.gif" />
 					</section>
 				</section>
 			</div>
 		</div>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-		<script>Reveal.initialize({controls: true,progress: true,history: true,center: true,transition: "slide",dependencies:[{src: 'lib/js/classList.js',condition: function(){return !document.body.classList;}},{src: 'plugin/markdown/marked.js',condition: function(){return !!document.querySelector('[data-markdown]');}},{src: 'plugin/markdown/markdown.js',condition: function(){return !!document.querySelector('[data-markdown]');}},{src: 'plugin/highlight/highlight.js',async: true,condition: function(){return !!document.querySelector('pre code');},callback: function(){hljs.initHighlightingOnLoad();}},{src: 'plugin/zoom-js/zoom.js',async: true},{src: 'plugin/notes/notes.js',async: true}]});</script>
+		<script>Reveal.initialize({controls:true,progress:true,history:true,center:true,transition:"slide",dependencies:[{src:'lib/js/classList.js',condition:function(){return !document.body.classList;}},{src:'plugin/markdown/marked.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/markdown/markdown.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/highlight/highlight.js',async:true,condition:function(){return !!document.querySelector('pre code');},callback:function(){hljs.initHighlightingOnLoad();}},{src:'plugin/zoom-js/zoom.js',async:true},{src:'plugin/notes/notes.js',async:true}]});</script>
 	</body>
 </html>
