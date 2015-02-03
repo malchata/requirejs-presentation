@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Applied RequireJS</title>
+		<meta name="author" content="Jeremy Wagner" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+		<link rel="stylesheet" href="css/reveal.css" />
+		<link rel="stylesheet" href="css/theme/blood.css" id="theme" />
+		<link rel="stylesheet" href="css/codecamp.css" />
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link href='http://fonts.googleapis.com/css?family=Clicker+Script' rel='stylesheet' type='text/css'>
+		<script>var link = document.createElement("link");link.rel = 'stylesheet';link.type = 'text/css';link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';document.getElementsByTagName('head')[0].appendChild(link);</script>
+	</head>
+	<body>
+		<!--
+			/**
+			 * Table of Contents
+			 **/
+
+			[1.0] - Intro
+			[2.0] - Dependency Management
+				[2.1] - What You're Already Doing
+				[2.2] - jQuery with Dependencies
+			[3.0 - AMD
+				[3.1] - AMD Intro Slide
+				[3.2] - <script async>
+				[3.3] - async Drawbacks
+				[3.4] - AMD Defined
+			[4.0] - CommonJS
+				[4.1] - What is CommonJS?
+				[4.2] - Out of the Box
+				[4.3] - Having our Cake and Eating Too
+				[4.4] - But More on That Later
+			[5.0] - RequireJS Intro Slides
+			[6.0] - Folder Structure
+			[7.0] - Single Point of Entry
+				[7.1] - Application index.html (The Old Way)
+			[8.0] - Modules
+				[8.1] - main.js
+				[8.2] - Adding Further Dependencies
+				[8.3] - Further Abstraction
+				[8.4] - define() versus require()
+		-->
+		<div class="reveal">
+			<div class="slides">
+				<!-- [1.0] - Intro -->
+				<section>
+					<h2>Applied RequireJS</h2>
+					<h4>Modular JavaScript for <span class="fancy">Fancy People</span></h4>
+					<h6>&mdash;&nbsp;&nbsp;Jeremy Wagner&nbsp;&nbsp;&mdash;</h6>
+				</section>
+				<!-- [2.0] - Dependency Management -->
+				<section>
+					<!-- [2.1] - What You're Already Doing -->
+					<section>
+						<h2>Dependency Management</h2>
+						<h3 class="fragment"><span class="fancy">or</span></h3>
+						<h4 class="fragment">A thing you're already doing (even though you might not know it, yet.)</h4>
+					</section>
+					<!-- [2.2] - jQuery with Dependencies -->
+					<section>
+						<h3>Loading jQuery with Dependencies</h3>
+						<h3 class="fancy">The Olde Tyme Way</h3>
+						<pre>
+							<code class="html" data-trim>
+&lt;script src=&quot;scripts/jquery.min.js&quot;>&lt;/script&gt;
+&lt;script src=&quot;scripts/main.js&quot;>&lt;/script&gt;
+							</code>
+						</pre>
+					</section>
+				</section>
+				<!-- [3.0] - AMD -->
+				<section>
+					<!-- [3.1] - AMD Intro Slide -->
+					<section>
+						<h2>AMD</h2>
+						<h3 class="fragment"><span class="fancy">or</span></h3>
+						<h4>
+							<span class="fragment">Asynchronus</span>
+							<span class="fragment">Module</span>
+							<span class="fragment">Definition</span>
+						</h4>
+					</section>
+					<!-- [3.2] - <script async> -->
+					<section>
+						<h2><code>async</code>hronous?</h2>
+						<h3 class="fragment roll-in">That's baked in, bro!</h3>
+						<pre class="fragment">
+							<code class="html" data-trim>
+&lt;script src=&quot;scripts/jquery.min.js&quot; async>&lt;/script&gt;
+&lt;script src=&quot;scripts/main.js&quot; async>&lt;/script&gt;
+							</code>
+						</pre>
+					</section>
+					<!-- [3.3] - async Drawbacks -->
+					<section>
+						<h3>Unforuntately, <code>async</code>...</h3>
+						<img class="fragment" src="images/scumbag_script.jpeg" />
+					</section>
+					<!-- [3.4] - AMD Defined -->
+					<section>
+						<h3>AMD in a Nutshell:</h3>
+						<img src="images/amd.png" />
+						<blockquote cite="http://en.wikipedia.org/wiki/Asynchronous_module_definition">
+							&ldquo;Asynchronous module definition (AMD) is a JavaScript specification that defines an API for defining code modules and their dependencies, and loading them asynchronously if desired.&rdquo;
+						</blockquote>
+					</section>
+				</section>
+				<!-- [4.0] - CommonJS -->
+				<section>
+					<!-- [4.1] - What is CommonJS? -->
+					<section>
+						<h3>But What About CommonJS?</h3>
+						<img class="fragment" src="images/gollum.gif" />
+					</section>
+					<!-- [4.2] - Out of the Box -->
+					<section>
+						<h2>CommonJS</h2>
+						<h3 class="fancy">Out of the box</h3>
+						<ul>
+							<li class="fragment">Not designed with the browser in mind <span class="fragment">(Transport formats have been proposed.)</span></li>
+							<li class="fragment">Suited for server side operations <span class="fragment">(e.g., I/O, database interaction.)</span></li>
+							<li class="fragment">Synchronous by design. <span class="fragment">(Though proposals exist for asynchronous behavior.)</span></li>
+						</ul>
+					</section>
+					<!-- [4.3] - Having our Cake and Eating Too -->
+					<section>
+						<h2>But it is possible to have our cake...</h2>
+						<h3 class="fancy fragment">...and eat it, too!</h3>
+					</section>
+					<!-- [4.4] - But More on That Later -->
+					<section>
+						<h3>...But more on that later.</h3>
+					</section>
+				</section>
+				<!-- [5.0] - RequireJS Intro Slides -->
+				<section>
+					<h4>Introducing</h4>
+					<h4 class="fancy">Finally...</h4>
+					<h2>RequireJS</h2>
+					<h4>An AMD style JavaScript module loader optimized for in-browser use.</h4>
+				</section>
+				<!-- [6.0] - Folder Structure -->
+				<section>
+					<h2>Folder Structure</h2>
+					<ul class="filesystem">
+						<li>
+							/webapp_root
+							<ul>
+								<li>index.html</li>
+								<li>scripts/</li>
+								<ul>
+									<li>app.js</li>
+									<li>
+										lib/
+										<ul>
+											<li>jquery.js</li>
+										</ul>
+									</li>
+									<li><u>require.js</u></li>
+								</ul>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<!-- [7.0] - Single Point of Entry -->
+				<section>
+					<!-- [7.1] - Application index.html (The Old Way) -->
+					<section data-transition="fade">
+						<h3>Your Application <code>index.html</code></h3>
+						<h3 class="fancy">The Old Way</h3>
+						<pre>
+							<code class="html" data-trim contenteditable>
+&lt;!doctype html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;
+			Applied RequireJS
+		&lt;/title&gt;
+		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/styles.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		...
+		&lt;script src=&quot;scripts/jquery.js&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+							</code>
+						</pre>
+						<!-- Slide Notes -->
+						<aside class="notes">
+							- Expound a little on the old way, but don't belabor it. You covered it earlier.<br />
+							- Remove the &lt;script&gt; tags to show that we don't need them.
+						</aside>
+					</section>
+					<!-- [7.2] - Application index.html (The Old Way) -->
+					<section data-transition="fade">
+						<h3>Your Application <code>index.html</code></h3>
+						<h3 class="fancy">With RequireJS Included</h3>
+						<pre>
+							<code class="html" data-trim contenteditable>
+&lt;!doctype html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;
+			Applied RequireJS
+		&lt;/title&gt;
+		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/styles.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		...
+		&lt;script src=&quot;scripts/require.js&quot; data-main=&quot;scripts/app&quot;&gt;&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+							</code>
+						</pre>
+						<!-- Slide Notes -->
+						<aside class="notes">
+							- Explain the single point of entry.<br />
+							- Explain the data-main attribute. Expound on why the .js extension is left off.
+						</aside>
+					</section>
+					<!-- [7.3] - That's It! -->
+					<section>
+						<h2>That's It!</h2>
+						<img class="fragment" src="images/notreally.gif" />
+						<aside class="notes">
+							- Preface explanation for main.js
+						</aside>
+					</section>
+				</section>
+				<!-- [8.0] - Modules -->
+				<section>
+					<!-- [8.1] - main.js -->
+					<section data-transition="fade">
+						<h3><code>scripts/app.js</code></h3>
+						<pre>
+							<code class="javascript" data-trim>
+require(["lib/jquery"], function($){
+	$(function(){
+		// Application Logic Here
+	});
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Go into detail about the syntax of the code.<br />
+							- Explain the dependency aspect and how code is loaded.
+						</aside>
+					</section>
+					<!-- [8.2] - Adding Further Dependencies -->
+					<section data-transition="fade">
+						<h2>Adding More Dependencies</h2>
+						<pre>
+							<code class="javascript" data-trim contenteditable>
+require(["lib/jquery"], function($){
+	$(function(){
+		// Application Logic Here
+	});
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Add <code>&quot;lib/modernizr&quot;</code> to the dependency list.<br />
+							- Add the <code>Modernizer</code> object to the function scope.
+						</aside>
+					</section>
+					<!-- [8.3] - Further Abstraction -->
+					<section>
+						<h2>Need Further Abstraction?</h2>
+						<h4 class="fragment roll-in">Use <code>define()</code> instead of <code>require()</code></h4>
+					</section>
+					<!-- [8.4] - define() versus require() -->
+					<section>
+						<h3><code>define()</code> vs. <code>require()</code></h3>
+						<ul>
+							<li class="fragment">Both take the same arguments in the same order: dependencies, then code.</li>
+							<li class="fragment"><code>require()</code> executes encapsulated code immediately.</li>
+							<li class="fragment"><code>define()</code> stores encapsulated code as a module that is executed by a <code>require()</code> statement.</li>
+						</ul>
+					</section>
+					<!-- [8.5] - Modularized Code -->
+					<section>
+						<h3><code>scripts/jquery-stuff.js</code></h3>
+						<pre>
+							<code class="javascript" data-trim>
+define(["lib/jquery"], function($){
+	$(function(){
+		// Application Logic Here
+	});
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Create a new file called <code>jquery-stuff.js</code>
+							- This code is not immediately executed.
+						</aside>
+					</section>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: "slide", // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies:[
+					{
+						src: 'lib/js/classList.js',
+						condition: function(){
+							return !document.body.classList;
+						}
+					},
+					{
+						src: 'plugin/markdown/marked.js',
+						condition: function(){
+							return !!document.querySelector('[data-markdown]');
+						}
+					},
+					{
+						src: 'plugin/markdown/markdown.js',
+						condition: function(){
+							return !!document.querySelector('[data-markdown]');
+						}
+					},
+					{
+						src: 'plugin/highlight/highlight.js',
+						async: true,
+						condition: function(){
+							return !!document.querySelector('pre code');
+						},
+						callback: function(){
+							hljs.initHighlightingOnLoad();
+						}
+					},
+					{
+						src: 'plugin/zoom-js/zoom.js',
+						async: true
+					},
+					{
+						src: 'plugin/notes/notes.js',
+						async: true
+					}
+				]
+			});
+
+			// window.addEventListener("mousedown", handleClick, false);
+			// window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+
+			// function handleClick(e){
+			// 	e.preventDefault();
+			// 	if(e.button === 0) Reveal.next();
+			// 	if(e.button === 2) Reveal.prev();
+			// }
+		</script>
+	</body>
+</html>

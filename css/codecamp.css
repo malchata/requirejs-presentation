@@ -1,0 +1,52 @@
+.reveal h6
+{
+	font-size: 0.625em;
+	content: "";
+	display: inline-block;
+}
+
+.reveal pre
+{
+	box-shadow: none;
+}
+
+.reveal pre code
+{
+	padding: 10px;
+	border-radius: 0.25em;
+}
+
+.reveal .fancy
+{
+	font-family: "Clicker Script", cursive;
+	font-size: 133.33%;
+	text-transform: none;
+	font-style: italic;
+}
+
+.reveal blockquote
+{
+	font-size: 0.5em;
+}
+
+ul.filesystem,
+ul.filesystem ul,
+ul.filesystem ul ul
+{
+	list-style: none;
+}
+
+ul.filesystem li:before
+{
+	content: "- ";
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code
+{
+	text-transform: none;
+}
