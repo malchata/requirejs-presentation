@@ -32,7 +32,7 @@
 			[4.0] - CommonJS
 				[4.1] - What is CommonJS?
 				[4.2] - Out of the Box
-				[4.3] - Having our Cake and Eating Too
+				[4.3] - Having our Cake and Eating It Too
 				[4.4] - But More on That Later
 			[5.0] - RequireJS Intro Slides
 			[6.0] - Folder Structure
@@ -50,10 +50,12 @@
 				[9.1] - Making it Manageable
 				[9.2] - baseUrl
 				[9.3] - paths
-				[9.4] - What About CDN Resources?
-				[9.5] - CDN Paths
-				[9.6] - Referencing Dependencies Defined in paths
-				[9.7] - Fallbacks
+				[9.4] - Referencing Dependencies Defined in paths
+				[9.5] - What About CDN Resources?
+				[9.6] - CDN Paths
+				[9.7] - Fallbacks: The Old Way
+				[9.8] - Fallbacks: The RequireJS Way
+				[9.9] -
 		-->
 		<div class="reveal">
 			<div class="slides">
@@ -77,8 +79,8 @@
 						<h3 class="fancy">The Olde Tyme Way</h3>
 						<pre>
 							<code class="html" data-trim>
-&lt;script src=&quot;scripts/jquery.min.js&quot;>&lt;/script&gt;
-&lt;script src=&quot;scripts/main.js&quot;>&lt;/script&gt;
+&lt;script src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
 							</code>
 						</pre>
 					</section>
@@ -101,8 +103,8 @@
 						<h3 class="fragment roll-in">That's baked in, bro!</h3>
 						<pre class="fragment">
 							<code class="html" data-trim>
-&lt;script src=&quot;scripts/jquery.min.js&quot; async>&lt;/script&gt;
-&lt;script src=&quot;scripts/main.js&quot; async>&lt;/script&gt;
+&lt;script src=&quot;scripts/jquery.min.js&quot; async&gt;&lt;/script&gt;
+&lt;script src=&quot;scripts/main.js&quot; async&gt;&lt;/script&gt;
 							</code>
 						</pre>
 					</section>
@@ -137,7 +139,7 @@
 							<li class="fragment">Synchronous by design. <span class="fragment">(Though proposals exist for asynchronous behavior.)</span></li>
 						</ul>
 					</section>
-					<!-- [4.3] - Having our Cake and Eating Too -->
+					<!-- [4.3] - Having our Cake and Eating It Too -->
 					<section>
 						<h2>But it is possible to have our cake...</h2>
 						<h3 class="fancy fragment">...and eat it, too!</h3>
@@ -354,22 +356,24 @@ require(["lib/jquery"], function($){
 					<!-- [9.2] - baseUrl -->
 					<section data-transition="fade">
 						<h2><code>baseUrl</code></h2>
-						<h4><code>scripts/app.js</code></h4>
 						<pre>
 							<code class="html" data-trim>
 &lt;script src=&quot;scripts/require.js&quot; data-main=&quot;scripts/app&quot;&gt;&lt;/script&gt;
 							</code>
 						</pre>
-						<pre class="fragment">
-							<code class="javascript" data-trim>
+						<div class="fragment">
+							<h4><code>scripts/app.js</code></h4>
+							<pre>
+								<code class="javascript" data-trim>
 // Configuration Settings
 requirejs.config({
 	"baseUrl": "scripts/some/other/path"
 });
-							</code>
-						</pre>
+								</code>
+							</pre>
+						</div>
 						<aside class="notes">
-							- <code>data-main</code> script determines the root URL. <code>baseUrl</code> just allows us to override that.
+							- <code>data-main</code> script determines the root URL. <code>&quot;baseUrl&quot;</code> just allows us to override that.
 						</aside>
 					</section>
 					<!-- [9.3] - paths -->
@@ -381,16 +385,48 @@ requirejs.config({
 // Configuration Settings
 requirejs.config({
 	"paths":{
-		"jquery": "lib/jquery.min"
+		"jquery": "lib/jquery.min",
+		"modernizr": "lib/modernizr.min"
 	}
 });
 							</code>
 						</pre>
 						<aside class="notes">
+							- Add the <code>&quot;jquery-stuff&quot;: &quot;lib/jquery-stuff&quot;</code> name/value pair to illustrate how to map modules.
 							- Explain how module names can be remapped to friendlier strings (e.g., <code>&quot;jquery&quot;</code> instead of <code>&quot;lib/jquery.min&quot;</code><br />
 						</aside>
 					</section>
-					<!-- [9.4] - What About CDN Resources? -->
+					<!-- [9.4] - Referencing Dependencies Defined in paths -->
+					<section>
+						<h4>Referencing Dependencies Defined in <code>paths</code></h4>
+						<h4><code>scripts/jquery-stuff.js</code></h4>
+						<pre>
+							<code class="javascript" data-trim>
+define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
+	$(function(){
+		// Application Logic Here
+	});
+});
+							</code>
+						</pre>
+						<div class="fragment">
+							<h4><code>scripts/app.js</code></h4>
+							<pre>
+								<code class="javascript" data-trim>
+/* requirejs.config() code... */
+
+// Execute code in jquery-stuff.js:
+require(["lib/jquery-stuff"]);
+								</code>
+							</pre>
+						</div>
+						<aside class="notes">
+							- <code>jquery-stuff.js</code>: Change <code>&quot;lib/modernizr&quot;</code> to <code>&quot;modernizr&quot;</code><br />
+							- <code>jquery-stuff.js</code>: Change <code>&quot;lib/jquery&quot;</code> to <code>&quot;jquery&quot;</code><br />
+							- <code>app.js</code>:  Change <code>&quot;lib/jquery&quot;</code> to <code>&quot;jquery&quot;</code><br />
+						</aside>
+					</section>
+					<!-- [9.5] - What About CDN Resources? -->
 					<section>
 						<h2>What About CDNs?</h2>
 						<div class="fragment">
@@ -398,7 +434,7 @@ requirejs.config({
 							<h3 class="fancy">You're good to go!</h3>
 						</div>
 					</section>
-					<!-- [9.5] - CDN Paths -->
+					<!-- [9.6] - CDN Paths -->
 					<section data-transition="fade">
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
@@ -408,6 +444,7 @@ requirejs.config({
 requirejs.config({
 	"paths":{
 		"jquery": "//code.jquery.com/jquery-1.11.2.min",
+		"modernizr": "lib/modernizr.min",
 		"jquery-stuff": "lib/jquery-stuff"
 	}
 });
@@ -417,11 +454,7 @@ requirejs.config({
 							- Reiterate that CDN paths need to leave off the <code>.js</code> extension.<br />
 						</aside>
 					</section>
-					<!-- [9.6] - Referencing Dependencies Defined in paths -->
-					<section>
-						<h3>Referencing Dependencies Defined in <code>paths</code></h3>
-					</section>
-					<!-- [9.7] - Fallbacks -->
+					<!-- [9.7] - Fallbacks: The Old Way -->
 					<section>
 						<h2>What About Fallbacks?</h2>
 						<div class="fragment">
@@ -433,6 +466,34 @@ requirejs.config({
 							</pre>
 							<h3 class="fancy">The Olde Tyme Way</h3>
 						</div>
+					</section>
+					<!-- [9.8] - Fallbacks: The RequireJS Way -->
+					<section data-transition="fade">
+						<h2><code>paths</code></h2>
+						<h4><code>scripts/app.js</code></h4>
+						<pre>
+							<code class="javascript" data-trim contenteditable>
+// Configuration Settings
+requirejs.config({
+	"paths":{
+		"jquery": "//code.jquery.com/jquery-1.11.2.min",
+		"modernizr": "lib/modernizr.min",
+		"jquery-stuff": "lib/jquery-stuff"
+	}
+});
+							</code>
+						</pre>
+						<h3 class="fancy">The RequireJS Way</h3>
+						<aside class="notes">
+							- Modify the <code>&quot;paths&quot;</code> for the <code>&quot;jquery&quot;</code> module by turning it into an array and adding <code>&quot;lib/jquery.min&quot;</code><br />
+							- Mention that fallbacks are not limited to just two locations.<br />
+							- Mention that some JS APIs (such as Facebook) can only be loaded this way.
+						</aside>
+					</section>
+					<!-- [9.9] - shim -->
+					<section>
+						<h2><code>shim</code></h2>
+						<img src="images/shims.jpg" />
 					</section>
 				</section>
 			</div>
