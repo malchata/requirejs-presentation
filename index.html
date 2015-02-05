@@ -20,60 +20,121 @@
 			 * Table of Contents
 			 **/
 
-			[1.0] - Intro
-			[2.0] - Dependency Management
-				[2.1] - What You're Already Doing
-				[2.2] - jQuery with Dependencies
-			[3.0 - AMD
-				[3.1] - AMD Intro Slide
-				[3.2] - <script async>
-				[3.3] - async Drawbacks
-				[3.4] - AMD Defined
-			[4.0] - CommonJS
-				[4.1] - What is CommonJS?
-				[4.2] - Out of the Box
-				[4.3] - Having our Cake and Eating It Too
-				[4.4] - But More on That Later
-			[5.0] - RequireJS Intro Slides
-			[6.0] - Folder Structure
-			[7.0] - Single Point of Entry
-				[7.1] - Application index.html (The Old Way)
-			[8.0] - Modules
-				[8.1] - main.js
-				[8.2] - Adding Further Dependencies
-				[8.3] - Further Abstraction
-				[8.4] - define() versus require()
-				[8.5] - Modularized Code
-				[8.6] - Hooking Up The New Module
-				[8.7] - On Further Abstraction
-			[9.0] - requirejs.config
-				[9.1] - Making it Manageable
-				[9.2] - baseUrl
-				[9.3] - paths
-				[9.4] - Referencing Dependencies Defined in paths
-				[9.5] - What About CDN Resources?
-				[9.6] - CDN Paths
-				[9.7] - Fallbacks: The Old Way
-				[9.8] - Fallbacks: The RequireJS Way
-				[9.9] -
+			[1.0] - Title Card
+			[2.0] - Intro
+					[2.1] - Evolution of Web Sites
+					[2.2] - A Simpler and More Innocent Time
+					[2.3] - Humble Beginnings
+					[2.4] - Minor Improvements
+					[2.5] - IE6 Feels Bad, Man
+					[2.6] - We've Come a Long, Long Way
+			[3.0] - AMD
 		-->
 		<div class="reveal">
 			<div class="slides">
-				<!-- [1.0] - Intro -->
+				<!--
+					[1.0] - Title Card
+				-->
 				<section>
-					<h2>Applied RequireJS</h2>
-					<h4>Modular JavaScript for <span class="fancy">Fancy People</span></h4>
+					<h2 class="fancy">Applied RequireJS</h2>
+					<h4>Modular JavaScript and Dependency Management for</h4>
+					<h3><span class="fancy">Fancy People</span></h3>
 					<h6>&mdash;&nbsp;&nbsp;Jeremy Wagner&nbsp;&nbsp;&mdash;</h6>
 				</section>
-				<!-- [2.0] - Dependency Management -->
+				<!--
+					[2.0] - Intro
+				-->
 				<section>
-					<!-- [2.1] - What You're Already Doing -->
+					<!--
+						[2.1] - Evolution of Web Sites
+					-->
+					<section>
+						<h3><span class="fancy">The&nbsp;</span> Evolution <span class="fancy">of&nbsp;</span> Web Sites</h3>
+						<div class="fragment">
+							<div><img src="images/daysofold.gif" /></div>
+							<span class="fancy">The Days of Old</span>
+						</div>
+					</section>
+					<!--
+						[2.2] - A Simpler and More Innocent Time
+					-->
+					<section>
+						<h4>The Web Was Simpler and More Innocent &quot;Back in the Day.&quot;</h4>
+						<div class="fragment">
+							<div><img src="images/me.jpg" /></div>
+						</div>
+						<aside class="notes">
+							- Begin by introducing self, and when I learned HTML.<br />
+							- Be self-deprecating, but not <i>too</i> much.<br />
+							- <u><b>BE BRIEF.</b></u>
+						</aside>
+					</section>
+					<!--
+						[2.3] - Humble Beginnings
+					-->
+					<section>
+						<h2>Humble Beginnings</h2>
+						<h4 class="fancy">Circa 1996</h4>
+						<div class="fragment">
+							<video data-autoplay loop src="video/webwizard.mov"></video>
+						</div>
+						<aside class="notes">
+							- The first tool for learning HTML for me was a terrible WYSIWYG editor.<br />
+							- Explain how this was a bridge to learning code.
+							- Tables for layout.
+							- Spacer GIFs.
+							- &lt;font&gt; and &lt;blink&gt; tags.
+						</aside>
+					</section>
+					<!--
+						[2.4] - Minor Improvements
+					-->
+					<section>
+						<h3>Things Got a Little Better...</h3>
+						<img class="fragment reduce" src="images/giveupandusetables.png" />
+						<aside class="notes">
+							- <b><u>BRIEFLY</u></b> mention advancements like CSS and JavaScript.
+						</aside>
+					</section>
+					<!--
+						[2.5] - IE6 Feels Bad, Man
+					-->
+					<section>
+						<h3>Coding for IE6 Compatibility...</h3>
+						<img class="fragment" src="images/feelsbadman.jpg" />
+					</section>
+					<!--
+						[2.6] - We've Come a Long, Long Way
+					-->
+					<section>
+						<h2>We've Come a Long, Long Way.</h2>
+						<aside class="notes">
+							- Comprehensive web applications with complex behaviors across many devices.
+							- User agents with greater capabilities.
+						</aside>
+					</section>
+				</section>
+				<!-- [3.0] - AMD -->
+				<section>
+					<!--
+						[3.1] -
+					-->
+					<section>
+						<h2>Modular JavaScript</h2>
+					</section>
+					<!--
+						[3.2] -
+					-->
 					<section>
 						<h2>Dependency Management</h2>
 						<h3 class="fragment"><span class="fancy">or</span></h3>
 						<h4 class="fragment">A thing you're already doing (even though you might not know it, yet.)</h4>
+						<aside class="notes">
+							-
+						</aside>
 					</section>
-					<!-- [2.2] - jQuery with Dependencies -->
+					<!--
+					-->
 					<section>
 						<h3>Loading jQuery with Dependencies</h3>
 						<h3 class="fancy">The Olde Tyme Way</h3>
@@ -84,10 +145,7 @@
 							</code>
 						</pre>
 					</section>
-				</section>
-				<!-- [3.0] - AMD -->
-				<section>
-					<!-- [3.1] - AMD Intro Slide -->
+					<!-- -->
 					<section>
 						<h2>AMD</h2>
 						<h3 class="fragment"><span class="fancy">or</span></h3>
@@ -97,7 +155,7 @@
 							<span class="fragment">Definition</span>
 						</h4>
 					</section>
-					<!-- [3.2] - <script async> -->
+					<!-- -->
 					<section>
 						<h2><code>async</code>hronous?</h2>
 						<h3 class="fragment roll-in">That's baked in, bro!</h3>
@@ -108,12 +166,12 @@
 							</code>
 						</pre>
 					</section>
-					<!-- [3.3] - async Drawbacks -->
+					<!-- -->
 					<section>
 						<h3>Unforuntately, <code>async</code>...</h3>
 						<img class="fragment" src="images/scumbag_script.jpeg" />
 					</section>
-					<!-- [3.4] - AMD Defined -->
+					<!-- -->
 					<section>
 						<h3>AMD in a Nutshell:</h3>
 						<img src="images/amd.png" />
@@ -122,41 +180,14 @@
 						</blockquote>
 					</section>
 				</section>
-				<!-- [4.0] - CommonJS -->
-				<section>
-					<!-- [4.1] - What is CommonJS? -->
-					<section>
-						<h3>But What About CommonJS?</h3>
-						<img class="fragment" src="images/gollum.gif" />
-					</section>
-					<!-- [4.2] - Out of the Box -->
-					<section>
-						<h2>CommonJS</h2>
-						<h3 class="fancy">Out of the box</h3>
-						<ul>
-							<li class="fragment">Not designed with the browser in mind <span class="fragment">(Transport formats have been proposed.)</span></li>
-							<li class="fragment">Suited for server side operations <span class="fragment">(e.g., I/O, database interaction.)</span></li>
-							<li class="fragment">Synchronous by design. <span class="fragment">(Though proposals exist for asynchronous behavior.)</span></li>
-						</ul>
-					</section>
-					<!-- [4.3] - Having our Cake and Eating It Too -->
-					<section>
-						<h2>But it is possible to have our cake...</h2>
-						<h3 class="fancy fragment">...and eat it, too!</h3>
-					</section>
-					<!-- [4.4] - But More on That Later -->
-					<section>
-						<h3>...But more on that later.</h3>
-					</section>
-				</section>
-				<!-- [5.0] - RequireJS Intro Slides -->
+				<!-- -->
 				<section>
 					<h4>Introducing</h4>
 					<h4 class="fancy">Finally...</h4>
 					<h2>RequireJS</h2>
 					<h4>An AMD style JavaScript module loader optimized for in-browser use.</h4>
 				</section>
-				<!-- [6.0] - Folder Structure -->
+				<!-- -->
 				<section>
 					<h2>Folder Structure</h2>
 					<ul class="filesystem">
@@ -179,9 +210,9 @@
 						</li>
 					</ul>
 				</section>
-				<!-- [7.0] - Single Point of Entry -->
+				<!-- -->
 				<section>
-					<!-- [7.1] - Application index.html (The Old Way) -->
+					<!-- -->
 					<section data-transition="fade">
 						<h3>Your Application <code>index.html</code></h3>
 						<h3 class="fancy">The Old Way</h3>
@@ -204,13 +235,12 @@
 &lt;/html&gt;
 							</code>
 						</pre>
-						<!-- Slide Notes -->
 						<aside class="notes">
 							- Expound a little on the old way, but don't belabor it. You covered it earlier.<br />
 							- Remove the &lt;script&gt; tags to show that we don't need them.
 						</aside>
 					</section>
-					<!-- [7.2] - Application index.html (The Old Way) -->
+					<!-- -->
 					<section data-transition="fade">
 						<h3>Your Application <code>index.html</code></h3>
 						<h3 class="fancy">With RequireJS Included</h3>
@@ -232,13 +262,12 @@
 &lt;/html&gt;
 							</code>
 						</pre>
-						<!-- Slide Notes -->
 						<aside class="notes">
 							- Explain the single point of entry.<br />
 							- Explain the data-main attribute. Expound on why the .js extension is left off.
 						</aside>
 					</section>
-					<!-- [7.3] - That's It! -->
+					<!-- -->
 					<section>
 						<h2>That's It!</h2>
 						<img class="fragment" src="images/notreally.gif" />
@@ -247,9 +276,9 @@
 						</aside>
 					</section>
 				</section>
-				<!-- [8.0] - Modules -->
+				<!-- -->
 				<section>
-					<!-- [8.1] - main.js -->
+					<!-- -->
 					<section data-transition="fade">
 						<h3><code>scripts/app.js</code></h3>
 						<pre>
@@ -266,7 +295,7 @@ require(["lib/jquery"], function($){
 							- Explain the dependency aspect and how code is loaded.
 						</aside>
 					</section>
-					<!-- [8.2] - Adding Further Dependencies -->
+					<!-- -->
 					<section data-transition="fade">
 						<h2>Adding More Dependencies</h2>
 						<pre>
@@ -283,12 +312,12 @@ require(["lib/jquery"], function($){
 							- Add the <code>Modernizer</code> object to the function scope.
 						</aside>
 					</section>
-					<!-- [8.3] - Further Abstraction -->
+					<!-- -->
 					<section>
 						<h2>Need Further Abstraction?</h2>
 						<h4 class="fragment roll-in">Use <code>define()</code> instead of <code>require()</code></h4>
 					</section>
-					<!-- [8.4] - define() versus require() -->
+					<!-- -->
 					<section>
 						<h3><code>define()</code> vs. <code>require()</code></h3>
 						<ul>
@@ -297,7 +326,7 @@ require(["lib/jquery"], function($){
 							<li class="fragment"><code>define()</code> stores encapsulated code as a module that is executed by a <code>require()</code> statement.</li>
 						</ul>
 					</section>
-					<!-- [8.5] - Modularized Code -->
+					<!-- -->
 					<section data-transition="fade">
 						<h3><code>scripts/jquery-stuff.js</code></h3>
 						<pre>
@@ -314,7 +343,7 @@ define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
 							- This code is not immediately executed. <code>require()</code> call is needed in <code>app.js</code>
 						</aside>
 					</section>
-					<!-- [8.6] - Hooking Up The New Module -->
+					<!-- -->
 					<section data-transition="fade">
 						<h3><code>scripts/app.js</code></h3>
 						<pre>
@@ -331,7 +360,7 @@ require(["lib/jquery"], function($){
 							- Change the dependency from <code>&quot;lib/jquery&quot;</code> to <code>&quot;lib/jquery-stuff&quot;</code>
 						</aside>
 					</section>
-					<!-- [8.7] - On Further Abstraction -->
+					<!-- -->
 					<section>
 						<h3>On Further Abstraction</h3>
 						<ul>
@@ -342,9 +371,9 @@ require(["lib/jquery"], function($){
 						</ul>
 					</section>
 				</section>
-				<!-- [9.0] - requirejs.config -->
+				<!-- -->
 				<section>
-					<!-- [9.1] - Making it Manageable -->
+					<!-- -->
 					<section>
 						<h2>Making it Manageable</h2>
 						<h3 class="fancy fragment">or</h3>
@@ -353,7 +382,7 @@ require(["lib/jquery"], function($){
 							- <code>requirejs.config()</code> takes an object with configuration key/value pairs.
 						</aside>
 					</section>
-					<!-- [9.2] - baseUrl -->
+					<!-- -->
 					<section data-transition="fade">
 						<h2><code>baseUrl</code></h2>
 						<pre>
@@ -376,7 +405,7 @@ requirejs.config({
 							- <code>data-main</code> script determines the root URL. <code>&quot;baseUrl&quot;</code> just allows us to override that.
 						</aside>
 					</section>
-					<!-- [9.3] - paths -->
+					<!-- -->
 					<section data-transition="fade">
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
@@ -396,7 +425,7 @@ requirejs.config({
 							- Explain how module names can be remapped to friendlier strings (e.g., <code>&quot;jquery&quot;</code> instead of <code>&quot;lib/jquery.min&quot;</code><br />
 						</aside>
 					</section>
-					<!-- [9.4] - Referencing Dependencies Defined in paths -->
+					<!-- -->
 					<section>
 						<h4>Referencing Dependencies Defined in <code>paths</code></h4>
 						<h4><code>scripts/jquery-stuff.js</code></h4>
@@ -426,7 +455,7 @@ require(["lib/jquery-stuff"]);
 							- <code>app.js</code>:  Change <code>&quot;lib/jquery&quot;</code> to <code>&quot;jquery&quot;</code><br />
 						</aside>
 					</section>
-					<!-- [9.5] - What About CDN Resources? -->
+					<!-- -->
 					<section>
 						<h2>What About CDNs?</h2>
 						<div class="fragment">
@@ -434,7 +463,7 @@ require(["lib/jquery-stuff"]);
 							<h3 class="fancy">You're good to go!</h3>
 						</div>
 					</section>
-					<!-- [9.6] - CDN Paths -->
+					<!-- -->
 					<section data-transition="fade">
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
@@ -454,7 +483,7 @@ requirejs.config({
 							- Reiterate that CDN paths need to leave off the <code>.js</code> extension.<br />
 						</aside>
 					</section>
-					<!-- [9.7] - Fallbacks: The Old Way -->
+					<!-- -->
 					<section>
 						<h2>What About Fallbacks?</h2>
 						<div class="fragment">
@@ -467,7 +496,7 @@ requirejs.config({
 							<h3 class="fancy">The Olde Tyme Way</h3>
 						</div>
 					</section>
-					<!-- [9.8] - Fallbacks: The RequireJS Way -->
+					<!-- -->
 					<section data-transition="fade">
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
@@ -490,7 +519,7 @@ requirejs.config({
 							- Mention that some JS APIs (such as Facebook) can only be loaded this way.
 						</aside>
 					</section>
-					<!-- [9.9] - shim -->
+					<!-- -->
 					<section>
 						<h2><code>shim</code></h2>
 						<img src="images/shims.jpg" />

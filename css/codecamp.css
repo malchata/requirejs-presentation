@@ -50,3 +50,9 @@ h6 code
 {
 	text-transform: none;
 }
+
+img.reduce
+{
+	max-width: 50%;
+	height: auto;
+}
