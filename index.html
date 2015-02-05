@@ -49,7 +49,7 @@
 						[2.1] - Evolution of Web Sites
 					-->
 					<section>
-						<h3><span class="fancy">The&nbsp;</span> Evolution <span class="fancy">of&nbsp;</span> Web Sites</h3>
+						<h3>The Evolution of Web Sites</h3>
 						<div class="fragment">
 							<div><img src="images/daysofold.gif" /></div>
 							<span class="fancy">The Days of Old</span>
@@ -80,9 +80,9 @@
 						</div>
 						<aside class="notes">
 							- The first tool for learning HTML for me was a terrible WYSIWYG editor.<br />
-							- Explain how this was a bridge to learning code.
-							- Tables for layout.
-							- Spacer GIFs.
+							- Explain how this was a bridge to learning code.<br />
+							- Tables for layout.<br />
+							- Spacer GIFs.<br />
 							- &lt;font&gt; and &lt;blink&gt; tags.
 						</aside>
 					</section>
@@ -109,35 +109,38 @@
 					<section>
 						<h2>We've Come a Long, Long Way.</h2>
 						<aside class="notes">
-							- Comprehensive web applications with complex behaviors across many devices.
+							- Comprehensive web applications with complex behaviors across many devices.<br />
 							- User agents with greater capabilities.
 						</aside>
 					</section>
 				</section>
 				<!-- [3.0] - AMD -->
 				<section>
-					<!--
-						[3.1] -
-					-->
+					<!-- -->
 					<section>
 						<h2>Modular JavaScript</h2>
+						<h3 class="fragment"><span class="fancy">or</span></h3>
+						<h4 class="fragment">A thing you're already doing.<br />...even though you might not know it, yet.</h4>
 					</section>
-					<!--
-						[3.2] -
-					-->
+					<!-- -->
+					<section>
+						<h3>Loading JavaScript as &quot;Modules&quot;</h3>
+						<pre>
+							<code class="html" data-trim>
+&lt;script src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
+							</code>
+						</pre>
+					</section>
+					<!-- -->
 					<section>
 						<h2>Dependency Management</h2>
 						<h3 class="fragment"><span class="fancy">or</span></h3>
-						<h4 class="fragment">A thing you're already doing (even though you might not know it, yet.)</h4>
-						<aside class="notes">
-							-
-						</aside>
+						<h4 class="fragment">A thing you're already doing.<br />even though you might not know it, yet.</h4>
 					</section>
-					<!--
-					-->
+					<!-- -->
 					<section>
-						<h3>Loading jQuery with Dependencies</h3>
-						<h3 class="fancy">The Olde Tyme Way</h3>
+						<h3>Loading JavaScript Files with &quot;Dependencies&quot;</h3>
 						<pre>
 							<code class="html" data-trim>
 &lt;script src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
@@ -182,10 +185,25 @@
 				</section>
 				<!-- -->
 				<section>
-					<h4>Introducing</h4>
-					<h4 class="fancy">Finally...</h4>
-					<h2>RequireJS</h2>
-					<h4>An AMD style JavaScript module loader optimized for in-browser use.</h4>
+					<!-- -->
+					<section>
+						<h4>Introducing</h4>
+						<h4 class="fancy">Finally...</h4>
+						<h2>RequireJS</h2>
+						<h4>An AMD style JavaScript module loader optimized for in-browser use.</h4>
+					</section>
+					<!-- -->
+					<section data-transition="fade">
+						<h2>Another Library?!</h2>
+						<img class="fragment" src="images/kramer_flipping_out.gif" />
+						<aside class="notes">
+							- Make a lead-in joke for the next slide.
+						</aside>
+					</section>
+					<!-- -->
+					<section data-transition="fade">
+						<img src="images/kramer_beer_chug.gif" />
+					</section>
 				</section>
 				<!-- -->
 				<section>
@@ -366,6 +384,7 @@ require(["lib/jquery"], function($){
 						<ul>
 							<li class="fragment">Bucketing dependencies equals more maintainable code.</li>
 							<li class="fragment">Bucketed dependencies are only loaded when they're needed.</li>
+							<li class="fragment">You create as many modules as necessary.</li>
 							<li class="fragment">Highly abstract architecture may not be appropriate for all projects.</li>
 							<li class="fragment">Simpler sites with little JavaScript may not be appropriate for RequireJS.</li>
 						</ul>
@@ -373,39 +392,38 @@ require(["lib/jquery"], function($){
 				</section>
 				<!-- -->
 				<section>
-					<!-- -->
-					<section>
-						<h2>Making it Manageable</h2>
-						<h3 class="fancy fragment">or</h3>
-						<h4 class="fragment"><code>requirejs.config()</code> is your friend.</h4>
-						<aside class="notes">
-							- <code>requirejs.config()</code> takes an object with configuration key/value pairs.
-						</aside>
-					</section>
-					<!-- -->
-					<section data-transition="fade">
-						<h2><code>baseUrl</code></h2>
-						<pre>
-							<code class="html" data-trim>
+					<h2>Making it Manageable</h2>
+					<h3 class="fancy fragment">or</h3>
+					<h4 class="fragment"><code>requirejs.config()</code> is your friend.</h4>
+					<aside class="notes">
+						- <code>requirejs.config()</code> takes an object with configuration key/value pairs.
+					</aside>
+				</section>
+				<!-- -->
+				<section data-transition="fade">
+					<h2><code>baseUrl</code></h2>
+					<pre>
+						<code class="html" data-trim>
 &lt;script src=&quot;scripts/require.js&quot; data-main=&quot;scripts/app&quot;&gt;&lt;/script&gt;
-							</code>
-						</pre>
-						<div class="fragment">
-							<h4><code>scripts/app.js</code></h4>
-							<pre>
-								<code class="javascript" data-trim>
+						</code>
+					</pre>
+					<div class="fragment">
+						<h4><code>scripts/app.js</code></h4>
+						<pre>
+							<code class="javascript" data-trim>
 // Configuration Settings
 requirejs.config({
 	"baseUrl": "scripts/some/other/path"
 });
-								</code>
-							</pre>
-						</div>
-						<aside class="notes">
-							- <code>data-main</code> script determines the root URL. <code>&quot;baseUrl&quot;</code> just allows us to override that.
-						</aside>
-					</section>
-					<!-- -->
+							</code>
+						</pre>
+					</div>
+					<aside class="notes">
+						- <code>data-main</code> script determines the root URL. <code>&quot;baseUrl&quot;</code> just allows us to override that.
+					</aside>
+				</section>
+				<!-- -->
+				<section>
 					<section data-transition="fade">
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
@@ -430,8 +448,8 @@ requirejs.config({
 						<h4>Referencing Dependencies Defined in <code>paths</code></h4>
 						<h4><code>scripts/jquery-stuff.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim>
-define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
+							<code class="javascript" data-trim contenteditable>
+define(["lib/jquery.min", "lib/modernizr.min"], function($, Modernizr){
 	$(function(){
 		// Application Logic Here
 	});
@@ -445,7 +463,7 @@ define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
 /* requirejs.config() code... */
 
 // Execute code in jquery-stuff.js:
-require(["lib/jquery-stuff"]);
+require(["jquery-stuff"]);
 								</code>
 							</pre>
 						</div>
@@ -520,9 +538,22 @@ requirejs.config({
 						</aside>
 					</section>
 					<!-- -->
+				</section>
+				<!-- -->
+				<section>
+					<!-- -->
 					<section>
 						<h2><code>shim</code></h2>
 						<img src="images/shims.jpg" />
+						<aside class="notes">
+							- <code>deps</code><br />
+							- <code>exports</code>
+						</aside>
+					</section>
+					<!-- -->
+					<section>
+						<h2><code>deps</code></h2>
+						<h4><code>deps</code> in your <code>shim</code> config help you manage dependencies in a central location.</h4>
 					</section>
 				</section>
 			</div>
