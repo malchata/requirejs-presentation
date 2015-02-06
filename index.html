@@ -66,6 +66,9 @@
 					[11.1] - shim Parts
 					[11.2] - deps
 					[11.3] - Aren't Dependencies Already Defined?
+					[11.4] - exports Overview
+					[11.5] - exports Example
+			[12.0] - Optimization
 		-->
 		<div class="reveal">
 			<div class="slides">
@@ -702,10 +705,46 @@ requirejs.config({
 						</aside>
 					</section>
 					<!--
-						[11.4] - exports
+						[11.4] - exports Overview
 					-->
 					<section>
 						<h2><code>exports</code></h2>
+						<h4>Used for non-AMD compliant modules.</h4>
+					</section>
+					<!--
+						[11.5] - exports Example
+					-->
+					<section>
+						<h2><code>exports</code></h2>
+						<code class="javascript" data-trim contenteditable>
+// Configuration Settings
+requirejs.config({
+	"paths":{
+		"jquery": ["//code.jquery.com/jquery-1.11.2.min", "lib/jquery.min"],
+		"modernizr": "lib/modernizr.min",
+		"jquery-stuff": "lib/jquery-stuff"
+	},
+	"shim":{
+		"jquery-stuff":{
+			"deps": "jquery"
+		}
+	}
+});
+						</code>
+						<aside class="notes">
+							- Add <code>&quot;lib/underscore.min&quot;</code> to the <code>&quot;paths&quot;</code> config.<br />
+							- Add <code>&quot;underscore&quot;</code> to the <code>&quot;shim&quot;</code> with an <code>&quot;exports&quot;</code> value of <code>&quot;_&quot;</code>.
+						</aside>
+					</section>
+				</section>
+				<!--
+					[12.0] - Optimization
+				-->
+				<section>
+					<!--
+					[12.1] - Optimization Title Card
+					-->
+					<section>
 					</section>
 				</section>
 			</div>
