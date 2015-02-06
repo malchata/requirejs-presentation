@@ -29,6 +29,43 @@
 					[2.5] - IE6 Feels Bad, Man
 					[2.6] - We've Come a Long, Long Way
 			[3.0] - AMD
+					[3.1] - "Modular" JavaScript"
+					[3.2] - Loading JavaScript as "Modules"
+					[3.3] - "Dependency" Management
+					[3.4] - Loading JavaScript With "Dependencies"
+					[3.5] - AMD Definition
+					[3.6] - async
+					[3.7] - async Shortcomings
+					[3.8] - AMD in a Nutshell
+			[4.0] - RequireJS Lead-in
+					[4.1] - Introducing RequireJS
+					[4.2] - Another Library?!
+					[4.3] - Kramer Chug!
+			[5.0] - Folder Structure
+			[6.0] - Loading RequireJS
+					[6.1] - index.html Before
+					[6.2] - Loading RequireJS and data-main
+					[6.3] - That's It (Not Really)
+			[7.0] - Modules 101
+					[7.1] - A Simple Module
+					[7.2] - Adding More Dependencies
+					[7.3] - Need Further Abstraction?
+					[7.4] - define() vs. require()
+					[7.5] - Defining a Module with define()
+					[7.6] - Calling Modules Defined With define()
+					[7.7] - On Further Abstraction
+			[8.0] - requirejs.config
+			[9.0] - baseUrl
+			[10.0] - paths
+					[10.1] - Referencing Dependencies Defined in paths
+					[10.2] - What About CDNs?
+					[10.3] - CDN Demo
+					[10.4] - What About Fallbacks?
+					[10.5] - Demonstrating Fallbacks With RequireJS
+			[11.0] - shim
+					[11.1] - shim Parts
+					[11.2] - deps
+					[11.3] - Aren't Dependencies Already Defined?
 		-->
 		<div class="reveal">
 			<div class="slides">
@@ -114,15 +151,21 @@
 						</aside>
 					</section>
 				</section>
-				<!-- [3.0] - AMD -->
+				<!--
+					[3.0] - AMD
+				-->
 				<section>
-					<!-- -->
+					<!--
+						[3.1] - "Modular" JavaScript"
+					-->
 					<section>
-						<h2>Modular JavaScript</h2>
+						<h2>&quot;Modular&quot; JavaScript</h2>
 						<h3 class="fragment"><span class="fancy">or</span></h3>
 						<h4 class="fragment">A thing you're already doing.<br />...even though you might not know it, yet.</h4>
 					</section>
-					<!-- -->
+					<!--
+						[3.2] - Loading JavaScript as "Modules"
+					-->
 					<section>
 						<h3>Loading JavaScript as &quot;Modules&quot;</h3>
 						<pre>
@@ -132,15 +175,19 @@
 							</code>
 						</pre>
 					</section>
-					<!-- -->
+					<!--
+						[3.3] - "Dependency" Management
+					-->
 					<section>
-						<h2>Dependency Management</h2>
+						<h2>&quot;Dependency&quot; Management</h2>
 						<h3 class="fragment"><span class="fancy">or</span></h3>
 						<h4 class="fragment">A thing you're already doing.<br />even though you might not know it, yet.</h4>
 					</section>
-					<!-- -->
+					<!--
+						[3.4] - Loading JavaScript With "Dependencies"
+					-->
 					<section>
-						<h3>Loading JavaScript Files with &quot;Dependencies&quot;</h3>
+						<h3>Loading JavaScript With &quot;Dependencies&quot;</h3>
 						<pre>
 							<code class="html" data-trim>
 &lt;script src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
@@ -148,7 +195,9 @@
 							</code>
 						</pre>
 					</section>
-					<!-- -->
+					<!--
+						[3.5] - AMD Definition
+					-->
 					<section>
 						<h2>AMD</h2>
 						<h3 class="fragment"><span class="fancy">or</span></h3>
@@ -158,7 +207,9 @@
 							<span class="fragment">Definition</span>
 						</h4>
 					</section>
-					<!-- -->
+					<!--
+						[3.6] - async
+					-->
 					<section>
 						<h2><code>async</code>hronous?</h2>
 						<h3 class="fragment roll-in">That's baked in, bro!</h3>
@@ -169,12 +220,16 @@
 							</code>
 						</pre>
 					</section>
-					<!-- -->
+					<!--
+						[3.7] - async Shortcomings
+					-->
 					<section>
 						<h3>Unforuntately, <code>async</code>...</h3>
 						<img class="fragment" src="images/scumbag_script.jpeg" />
 					</section>
-					<!-- -->
+					<!--
+						[3.8] - AMD in a Nutshell
+					-->
 					<section>
 						<h3>AMD in a Nutshell:</h3>
 						<img src="images/amd.png" />
@@ -183,16 +238,22 @@
 						</blockquote>
 					</section>
 				</section>
-				<!-- -->
+				<!--
+					[4.0] - RequireJS Lead-in
+				-->
 				<section>
-					<!-- -->
+					<!--
+						[4.1] - Introducing RequireJS
+					-->
 					<section>
 						<h4>Introducing</h4>
 						<h4 class="fancy">Finally...</h4>
 						<h2>RequireJS</h2>
 						<h4>An AMD style JavaScript module loader optimized for in-browser use.</h4>
 					</section>
-					<!-- -->
+					<!--
+						[4.2] - Another Library?!
+					-->
 					<section data-transition="fade">
 						<h2>Another Library?!</h2>
 						<img class="fragment" src="images/kramer_flipping_out.gif" />
@@ -200,12 +261,16 @@
 							- Make a lead-in joke for the next slide.
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[4.3] - Kramer Chug!
+					-->
 					<section data-transition="fade">
 						<img src="images/kramer_beer_chug.gif" />
 					</section>
 				</section>
-				<!-- -->
+				<!--
+					[5.0] - Folder Structure
+				-->
 				<section>
 					<h2>Folder Structure</h2>
 					<ul class="filesystem">
@@ -227,10 +292,17 @@
 							</ul>
 						</li>
 					</ul>
+					<aside class="notes">
+						- RequireJS locates and loads modules according to a particular folder structure.
+					</aside>
 				</section>
-				<!-- -->
+				<!--
+					[6.0] - Loading RequireJS
+				-->
 				<section>
-					<!-- -->
+					<!--
+						[6.1] - index.html Before
+					-->
 					<section data-transition="fade">
 						<h3>Your Application <code>index.html</code></h3>
 						<h3 class="fancy">The Old Way</h3>
@@ -258,7 +330,9 @@
 							- Remove the &lt;script&gt; tags to show that we don't need them.
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[6.2] - Loading RequireJS and data-main
+					-->
 					<section data-transition="fade">
 						<h3>Your Application <code>index.html</code></h3>
 						<h3 class="fancy">With RequireJS Included</h3>
@@ -275,28 +349,35 @@
 	&lt;/head&gt;
 	&lt;body&gt;
 		...
-		&lt;script src=&quot;scripts/require.js&quot; data-main=&quot;scripts/app&quot;&gt;&lt;/script&gt;
+		&lt;script src=&quot;scripts/require.js&quot;&gt;&lt;/script&gt;
 	&lt;/body&gt;
 &lt;/html&gt;
 							</code>
 						</pre>
 						<aside class="notes">
 							- Explain the single point of entry.<br />
+							- Add in the data-main=&quot;scripts/app&quot; attribute.<br />
 							- Explain the data-main attribute. Expound on why the .js extension is left off.
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[6.3] - That's It (Not Really)
+					-->
 					<section>
 						<h2>That's It!</h2>
 						<img class="fragment" src="images/notreally.gif" />
 						<aside class="notes">
-							- Preface explanation for main.js
+							- Preface explanation for app.js
 						</aside>
 					</section>
 				</section>
-				<!-- -->
+				<!--
+					[7.0] - Modules 101
+				-->
 				<section>
-					<!-- -->
+					<!--
+						[7.1] - A Simple Module
+					-->
 					<section data-transition="fade">
 						<h3><code>scripts/app.js</code></h3>
 						<pre>
@@ -313,7 +394,9 @@ require(["lib/jquery"], function($){
 							- Explain the dependency aspect and how code is loaded.
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[7.2] - Adding More Dependencies
+					-->
 					<section data-transition="fade">
 						<h2>Adding More Dependencies</h2>
 						<pre>
@@ -330,12 +413,16 @@ require(["lib/jquery"], function($){
 							- Add the <code>Modernizer</code> object to the function scope.
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[7.3] - Need Further Abstraction?
+					-->
 					<section>
 						<h2>Need Further Abstraction?</h2>
 						<h4 class="fragment roll-in">Use <code>define()</code> instead of <code>require()</code></h4>
 					</section>
-					<!-- -->
+					<!--
+						[7.4] - define() vs. require()
+					-->
 					<section>
 						<h3><code>define()</code> vs. <code>require()</code></h3>
 						<ul>
@@ -344,7 +431,9 @@ require(["lib/jquery"], function($){
 							<li class="fragment"><code>define()</code> stores encapsulated code as a module that is executed by a <code>require()</code> statement.</li>
 						</ul>
 					</section>
-					<!-- -->
+					<!--
+						[7.5] - Defining a Module with define()
+					-->
 					<section data-transition="fade">
 						<h3><code>scripts/jquery-stuff.js</code></h3>
 						<pre>
@@ -361,7 +450,9 @@ define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
 							- This code is not immediately executed. <code>require()</code> call is needed in <code>app.js</code>
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[7.6] - Calling Modules Defined With define()
+					-->
 					<section data-transition="fade">
 						<h3><code>scripts/app.js</code></h3>
 						<pre>
@@ -378,7 +469,9 @@ require(["lib/jquery"], function($){
 							- Change the dependency from <code>&quot;lib/jquery&quot;</code> to <code>&quot;lib/jquery-stuff&quot;</code>
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[7.7] - On Further Abstraction
+					-->
 					<section>
 						<h3>On Further Abstraction</h3>
 						<ul>
@@ -390,7 +483,9 @@ require(["lib/jquery"], function($){
 						</ul>
 					</section>
 				</section>
-				<!-- -->
+				<!--
+					[8.0] - requirejs.config
+				-->
 				<section>
 					<h2>Making it Manageable</h2>
 					<h3 class="fancy fragment">or</h3>
@@ -399,7 +494,9 @@ require(["lib/jquery"], function($){
 						- <code>requirejs.config()</code> takes an object with configuration key/value pairs.
 					</aside>
 				</section>
-				<!-- -->
+				<!--
+					[9.0] - baseUrl
+				-->
 				<section data-transition="fade">
 					<h2><code>baseUrl</code></h2>
 					<pre>
@@ -422,7 +519,9 @@ requirejs.config({
 						- <code>data-main</code> script determines the root URL. <code>&quot;baseUrl&quot;</code> just allows us to override that.
 					</aside>
 				</section>
-				<!-- -->
+				<!--
+					[10.0] - paths
+				-->
 				<section>
 					<section data-transition="fade">
 						<h2><code>paths</code></h2>
@@ -443,7 +542,9 @@ requirejs.config({
 							- Explain how module names can be remapped to friendlier strings (e.g., <code>&quot;jquery&quot;</code> instead of <code>&quot;lib/jquery.min&quot;</code><br />
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[10.1] - Referencing Dependencies Defined in paths
+					-->
 					<section>
 						<h4>Referencing Dependencies Defined in <code>paths</code></h4>
 						<h4><code>scripts/jquery-stuff.js</code></h4>
@@ -473,7 +574,9 @@ require(["jquery-stuff"]);
 							- <code>app.js</code>:  Change <code>&quot;lib/jquery&quot;</code> to <code>&quot;jquery&quot;</code><br />
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[10.2] - What About CDNs?
+					-->
 					<section>
 						<h2>What About CDNs?</h2>
 						<div class="fragment">
@@ -481,7 +584,9 @@ require(["jquery-stuff"]);
 							<h3 class="fancy">You're good to go!</h3>
 						</div>
 					</section>
-					<!-- -->
+					<!--
+						[10.3] - CDN Demo
+					-->
 					<section data-transition="fade">
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
@@ -501,7 +606,9 @@ requirejs.config({
 							- Reiterate that CDN paths need to leave off the <code>.js</code> extension.<br />
 						</aside>
 					</section>
-					<!-- -->
+					<!--
+						[10.4] - What About Fallbacks?
+					-->
 					<section>
 						<h2>What About Fallbacks?</h2>
 						<div class="fragment">
@@ -514,7 +621,9 @@ requirejs.config({
 							<h3 class="fancy">The Olde Tyme Way</h3>
 						</div>
 					</section>
-					<!-- -->
+					<!--
+						[10.5] - Demonstrating Fallbacks With RequireJS
+					-->
 					<section data-transition="fade">
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
@@ -537,23 +646,66 @@ requirejs.config({
 							- Mention that some JS APIs (such as Facebook) can only be loaded this way.
 						</aside>
 					</section>
-					<!-- -->
 				</section>
-				<!-- -->
+				<!--
+					[11.0] - shim
+				-->
 				<section>
-					<!-- -->
+					<!--
+						[11.1] - shim Parts
+					-->
 					<section>
 						<h2><code>shim</code></h2>
 						<img src="images/shims.jpg" />
 						<aside class="notes">
-							- <code>deps</code><br />
-							- <code>exports</code>
+							- <code>shim</code> is a way to centralize our dependencies.
 						</aside>
 					</section>
-					<!-- -->
-					<section>
+					<!--
+						[11.2] - deps
+					-->
+					<section data-transition="fade">
 						<h2><code>deps</code></h2>
-						<h4><code>deps</code> in your <code>shim</code> config help you manage dependencies in a central location.</h4>
+						<pre>
+							<code class="javascript" data-trim contenteditable>
+// Configuration Settings
+requirejs.config({
+	"paths":{
+		"jquery": ["//code.jquery.com/jquery-1.11.2.min", "lib/jquery.min"],
+		"modernizr": "lib/modernizr.min",
+		"jquery-stuff": "lib/jquery-stuff"
+	},
+	"shim":{
+		"jquery-stuff":{
+			"deps": "jquery"
+		}
+	}
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Explain that each entry in <code>&quot;shim&quot;</code> is specific to a particular module.<br />
+							- A good example would be jQuery UI being listed as a dependency to jQuery.<br />
+							- If a module has multiple dependencies, explain the use of the array syntax.
+						</aside>
+					</section>
+					<!--
+						[11.3] - Aren't Dependencies Already Defined?
+					-->
+					<section>
+						<h3>Don't We Already Define Dependencies in Modules?</h3>
+						<img src="images/kramer_confused.gif" />
+						<aside class="notes">
+							- Short answer: Yes we do. We don't have to use <code>deps.</code><br />
+							- But, it is a centralized way to ensure that we are loading the modules we need.
+							- It can reduce the amount of clutter in our dependency arrays in our modules.
+						</aside>
+					</section>
+					<!--
+						[11.4] - exports
+					-->
+					<section>
+						<h2><code>exports</code></h2>
 					</section>
 				</section>
 			</div>
