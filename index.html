@@ -69,6 +69,13 @@
 					[11.4] - exports Overview
 					[11.5] - exports Example
 			[12.0] - Optimization
+					[12.1] - Optimization Title Card
+					[12.2] - When to Optimize
+					[12.3] - Installation
+					[12.4] - Setting Up a Build Profile
+					[12.5] - Building on the Command Line
+					[12.6] - Building via Grunt
+					[12.7] - Profit!
 		-->
 		<div class="reveal">
 			<div class="slides">
@@ -716,7 +723,8 @@ requirejs.config({
 					-->
 					<section>
 						<h2><code>exports</code></h2>
-						<code class="javascript" data-trim contenteditable>
+						<pre>
+							<code class="javascript" data-trim contenteditable>
 // Configuration Settings
 requirejs.config({
 	"paths":{
@@ -730,7 +738,8 @@ requirejs.config({
 		}
 	}
 });
-						</code>
+							</code>
+						</pre>
 						<aside class="notes">
 							- Add <code>&quot;lib/underscore.min&quot;</code> to the <code>&quot;paths&quot;</code> config.<br />
 							- Add <code>&quot;underscore&quot;</code> to the <code>&quot;shim&quot;</code> with an <code>&quot;exports&quot;</code> value of <code>&quot;_&quot;</code>.
@@ -742,9 +751,102 @@ requirejs.config({
 				-->
 				<section>
 					<!--
-					[12.1] - Optimization Title Card
+						[12.1] - Optimization Title Card
 					-->
 					<section>
+						<h2>RequireJS</h2>
+						<h3>Optimizer</h3>
+					</section>
+					<!--
+						[12.2] - When to Optimize
+					-->
+					<section>
+						<h3>When is Optimization Useful?</h3>
+						<ul>
+							<li class="fragment">When you have many modules.</li>
+							<li class="fragment">When you want to cut down on HTTP requests.</li>
+						</ul>
+					</section>
+					<!--
+						[12.3] - Installation
+					-->
+					<section>
+						<h2>Installation</h2>
+						<h3><code>Node.js</code></h3>
+						<pre>
+							<code class="shell" data-trim>
+> npm install -g requirejs
+							</code>
+						</pre>
+						<div class="fragment">
+							<h4>Can also be run with:</h4>
+							<ul>
+								<li>Gulp</li>
+								<li>Java with Rhino</li>
+								<li>Your Browser</li>
+							</ul>
+						</div>
+					</section>
+					<!--
+						[12.4] - Setting Up a Build Profile
+					-->
+					<section>
+						<h3>Setting Up a Build Profile</h3>
+						<h4><code>build.js</code></h4>
+						<pre>
+							<code class="javascript" data-trim>
+({
+	"baseUrl": "scripts",
+	"paths":{
+		"jquery": "lib/jquery.min",
+		"modernizr": "lib/modernizr.min",
+		"jquery-stuff": "lib/jquery-stuff"
+	},
+	"name": "app",
+	"out": "scripts/app.built.js"
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- <code>&quot;baseUrl&quot;</code> points to where <code>app.js</code> resides.<br />
+							- <code>&quot;paths&quot;</code> needs to map to the values in <code>requirejs.config</code>.<br />
+							- <code>&quot;name&quot;</code> should be the same name as the script in your <code>data-main</code> entry point.<br />
+							- <code>&quot;out&quot;</code> is the destination output file.
+						</aside>
+					</section>
+					<!--
+						[12.5] - Building on the Command Line
+					-->
+					<section>
+						<h3>Building on the Command Line</h3>
+						<pre>
+							<code class="shell" data-trim>
+> r.js -o build.js
+							</code>
+						</pre>
+						<aside class="notes">
+							- This command will produce a minified single file.
+						</aside>
+					</section>
+					<!--
+						[12.6] - Building via Grunt
+					-->
+					<section>
+						<h3>Building via Grunt</h3>
+						<ol type="1">
+							<li class="fragment">Modify <code>package.json</code> to include <code>&quot;grunt-contrib-requirejs&quot;</code> under <code>&quot;dependencies&quot;</code>.</li>
+							<li class="fragment">Set build options under the <code>requirejs</code> task in <code>Gruntfile.js</code> <span class="fragment">(These options are the same as in the previous <code>build.js</code>.)</span></li>
+							<li class="fragment">Run the <code>requirejs</code> task at the command line on demand, or bind it to the <code>watch</code> task so that it is generated when scripts are modified.</li>
+						</ol>
+						<br /><br />
+						<h4 class="fragment">Then...</h4>
+					</section>
+					<!--
+						[12.7] - Profit!
+					-->
+					<section>
+						<h2>Profit!</h2>
+						<img src="images/profit.gif" />
 					</section>
 				</section>
 			</div>
