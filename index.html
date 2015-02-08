@@ -69,17 +69,19 @@
 					[11.3] - Aren't Dependencies Already Defined?
 					[11.4] - exports Overview
 					[11.5] - exports Example
-			[12.0] - Optimization
-					[12.1] - Optimization Title Card
-					[12.2] - When to Optimize
-					[12.3] - Installation
-					[12.4] - Setting Up a Build Profile
-					[12.5] - Building on the Command Line
-					[12.6] - Building via Grunt
-					[12.7] - Profit!
-			[13.0] - In The Wild
-			[14.0] - Alternatives
-			[15.0] - The End
+					[11.6] - Omission of exports
+			[12.0] - Esoteric Config Options
+			[13.0] - Optimization
+					[13.1] - Optimization Title Card
+					[13.2] - When to Optimize
+					[13.3] - Installation
+					[13.4] - Setting Up a Build Profile
+					[13.5] - Building on the Command Line
+					[13.6] - Building via Grunt
+					[13.7] - Profit!
+			[14.0] - In The Wild
+			[15.0] - Alternatives
+			[16.0] - The End
 		-->
 		<div class="reveal">
 			<div class="slides">
@@ -768,20 +770,56 @@ requirejs.config({
 							- Add <code>&quot;underscore&quot;</code> to the <code>&quot;shim&quot;</code> with an <code>&quot;exports&quot;</code> value of <code>&quot;_&quot;</code>.
 						</aside>
 					</section>
+					<!--
+						[11.6] - Omission of exports
+					-->
+					<section>
+						<h2>Omitting <code>exports</code>.
+						<h4>If you omit <code>exports</code>, <code>deps</code> is assumed:</h4>
+						<pre>
+							<code class="javascript" data-trim>
+// Configuration Settings
+requirejs.config({
+	"paths":{
+		"jquery": ["//code.jquery.com/jquery-1.11.2.min", "lib/jquery.min"],
+		"modernizr": "lib/modernizr.min",
+		"jquery-stuff": "lib/jquery-stuff"
+	},
+	"shim":{
+		"jquery-stuff": "jquery"
+	}
+});
+							</code>
+						</pre>
+					</section>
 				</section>
 				<!--
-					[12.0] - Optimization
+					[12.0] - Esoteric Config Options
+				-->
+				<section>
+					<h3>Esoteric Config Options</h3>
+					<h4 class="fancy">An incomplete list:</h4>
+					<ul>
+						<li class="fragment"><code>bundles</code>: Maps many modules to a single ID.</li>
+						<li class="fragment"><code>config</code>: Specify options in the module's namespace (e.g., API keys, version numbers, other module-specific settings.)</li>
+						<li class="fragment"><code>waitSeconds</code>: How long to wait for a module to load before giving up.</li>
+						<li class="fragment"><code>skipDataMain</code>: Disables the <code>data-main</code> entry point.</li>
+						<li class="fragment"><code>urlArgs</code>: Query string variables to append to module requests (useful for overriding caching mechanisms.)</li>
+					</ul>
+				</section>
+				<!--
+					[13.0] - Optimization
 				-->
 				<section>
 					<!--
-						[12.1] - Optimization Title Card
+						[13.1] - Optimization Title Card
 					-->
 					<section>
 						<h2>RequireJS</h2>
 						<h3>Optimizer</h3>
 					</section>
 					<!--
-						[12.2] - When to Optimize
+						[13.2] - When to Optimize
 					-->
 					<section>
 						<h3>When is Optimization Useful?</h3>
@@ -791,7 +829,7 @@ requirejs.config({
 						</ul>
 					</section>
 					<!--
-						[12.3] - Installation
+						[13.3] - Installation
 					-->
 					<section>
 						<h2>Installation</h2>
@@ -811,7 +849,7 @@ requirejs.config({
 						</div>
 					</section>
 					<!--
-						[12.4] - Setting Up a Build Profile
+						[13.4] - Setting Up a Build Profile
 					-->
 					<section>
 						<h3>Setting Up a Build Profile</h3>
@@ -838,7 +876,7 @@ requirejs.config({
 						</aside>
 					</section>
 					<!--
-						[12.5] - Building on the Command Line
+						[13.5] - Building on the Command Line
 					-->
 					<section>
 						<h3>Building on the Command Line</h3>
@@ -853,7 +891,7 @@ requirejs.config({
 						</aside>
 					</section>
 					<!--
-						[12.6] - Building via Grunt
+						[13.6] - Building via Grunt
 					-->
 					<section>
 						<h3>Building via Grunt</h3>
@@ -866,7 +904,7 @@ requirejs.config({
 						<h4 class="fragment">Then...</h4>
 					</section>
 					<!--
-						[12.7] - Profit!
+						[13.7] - Profit!
 					-->
 					<section>
 						<h2>Profit!</h2>
@@ -874,14 +912,14 @@ requirejs.config({
 					</section>
 				</section>
 				<!--
-					[13.0] - In The Wild
+					[14.0] - In The Wild
 				-->
 				<section>
 					<h2>RequireJS in The Wild</h2>
 					<img src="images/honey_badger.gif" />
 				</section>
 				<!--
-					[14.0] - Alternatives
+					[15.0] - Alternatives
 				-->
 				<section>
 					<h3>Don't like RequireJS, but like the idea of employing modular development?</h2>
@@ -897,7 +935,7 @@ requirejs.config({
 					</aside>
 				</section>
 				<!--
-					[15.0] - The End
+					[16.0] - The End
 				-->
 				<section>
 					<h3 class="fancy" style="font-size: 500%;">Fin.</h3>
