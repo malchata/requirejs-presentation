@@ -54,6 +54,7 @@
 					[7.5] - Defining a Module with define()
 					[7.6] - Calling Modules Defined With define()
 					[7.7] - On Further Abstraction
+					[7.8] - On Further Abstraction
 			[8.0] - requirejs.config
 			[9.0] - baseUrl
 			[10.0] - paths
@@ -76,6 +77,9 @@
 					[12.5] - Building on the Command Line
 					[12.6] - Building via Grunt
 					[12.7] - Profit!
+			[13.0] - In The Wild
+			[14.0] - Alternatives
+			[15.0] - The End
 		-->
 		<div class="reveal">
 			<div class="slides">
@@ -480,7 +484,26 @@ require(["lib/jquery"], function($){
 						</aside>
 					</section>
 					<!--
-						[7.7] - On Further Abstraction
+						[7.7] - Modules Without Dependencies
+					-->
+					<section>
+						<h3>What if my Module has no Dependencies?</h3>
+						<h4 class="fragment roll-in">Omit Them!</h4>
+						<pre class="fragment">
+							<code class="javascript" data-trim contenteditable>
+// I'm an adult!
+define(function(){
+	// Your wholly self-sufficient and independent code goes here.
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Functions aren't the only thing you can provide as an argument.<br />
+							- Demonstrate with a simple object.
+						</aside>
+					</section>
+					<!--
+						[7.8] - On Further Abstraction
 					-->
 					<section>
 						<h3>On Further Abstraction</h3>
@@ -825,7 +848,8 @@ requirejs.config({
 							</code>
 						</pre>
 						<aside class="notes">
-							- This command will produce a minified single file.
+							- This command will produce a minified single file.<br />
+							- Note
 						</aside>
 					</section>
 					<!--
@@ -849,10 +873,45 @@ requirejs.config({
 						<img src="images/profit.gif" />
 					</section>
 				</section>
+				<!--
+					[13.0] - In The Wild
+				-->
+				<section>
+					<h2>RequireJS in The Wild</h2>
+					<img src="images/honey_badger.gif" />
+				</section>
+				<!--
+					[14.0] - Alternatives
+				-->
+				<section>
+					<h3>Don't like RequireJS, but like the idea of employing modular development?</h2>
+					<h4>There are alternatives:</h4>
+					<ul>
+						<li>Browserify: (<a href="http://www.browserify.org">browserify.org</a>)</li>
+						<li>curl.js/RaveJS: (<a href="https://github.com/RaveJS">github.com/RaveJS</a>)</li>
+						<li>modulejs (<a href="http://larsjung.de/modulejs">larsjung.de/modulejs</a>)</li>
+						<li>LABjs (<a href="http://labjs.com">labjs.com</a> - No longer maintained, but use is supported and encouraged.)</li>
+					</ul>
+					<aside class="notes">
+						- Caution people that a lot of what Google yields are deprecated/unmaintained solutions (e.g., LABjs).
+					</aside>
+				</section>
+				<!--
+					[15.0] - The End
+				-->
+				<section>
+					<h3 class="fancy" style="font-size: 500%;">Fin.</h3>
+					<h3 class="fancy">Thank You!</h3>
+					<h3 class="fancy">-j</h3>
+				</section>
+				<aside class="notes">
+					- Acknowledge missed topics: Unit testing, debugging, et cetera.
+					- Prompt for Questions.
+				</aside>
 			</div>
 		</div>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-		<script>Reveal.initialize({controls:true,progress:true,history:true,center:true,transition:"slide",dependencies:[{src:'lib/js/classList.js',condition:function(){return !document.body.classList;}},{src:'plugin/markdown/marked.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/markdown/markdown.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/highlight/highlight.js',async:true,condition:function(){return !!document.querySelector('pre code');},callback:function(){hljs.initHighlightingOnLoad();}},{src:'plugin/zoom-js/zoom.js',async:true},{src:'plugin/notes/notes.js',async:true}]});</script>
+		<script>Reveal.initialize({controls:true,progress:false,history:true,center:true,transition:"slide",dependencies:[{src:'lib/js/classList.js',condition:function(){return !document.body.classList;}},{src:'plugin/markdown/marked.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/markdown/markdown.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/highlight/highlight.js',async:true,condition:function(){return !!document.querySelector('pre code');},callback:function(){hljs.initHighlightingOnLoad();}},{src:'plugin/zoom-js/zoom.js',async:true},{src:'plugin/notes/notes.js',async:true}]});</script>
 	</body>
 </html>
