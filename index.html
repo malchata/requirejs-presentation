@@ -11,6 +11,8 @@
 		<link type="text/css" rel="stylesheet" href="css/theme/blood.css" id="theme" />
 		<link type="text/css" rel="stylesheet" href="css/codecamp.css" />
 		<link type="text/css" rel="stylesheet" href="lib/css/zenburn.css" />
+		<link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Clicker+Script" />
+		<link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Great+Vibes" />
 		<script>var link=document.createElement("link");link.rel='stylesheet';link.type='text/css';link.href=window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' :'css/print/paper.css';document.getElementsByTagName('head')[0].appendChild(link);</script>
 	</head>
 	<body>
@@ -78,6 +80,8 @@
 					[13.5] - Building on the Command Line
 					[13.6] - Building via Grunt
 					[13.7] - Profit!
+					[13.8] - CDN Warning
+					[13.9] - How to Accommodate for CDN Paths
 			[14.0] - In The Wild
 			[15.0] - Alternatives
 			[16.0] - The End
@@ -90,7 +94,7 @@
 				<section>
 					<h2 class="fancy">Applied RequireJS</h2>
 					<h4>Modular JavaScript and Dependency Management for</h4>
-					<h3><span class="fancy">Fancy People</span></h3>
+					<h3 class="fancy">Fancy People</h3>
 					<h6>&mdash;&nbsp;&nbsp;Jeremy Wagner&nbsp;&nbsp;&mdash;</h6>
 				</section>
 				<!--
@@ -128,7 +132,7 @@
 						<h2>Humble Beginnings</h2>
 						<h4 class="fancy">Circa 1996</h4>
 						<div class="fragment">
-							<video data-autoplay loop src="video/webwizard.mov"></video>
+							<video data-autoplay loop src="video/webwizard.ogv" type="video/ogg"></video>
 						</div>
 						<aside class="notes">
 							- The first tool for learning HTML for me was a terrible WYSIWYG editor.<br />
@@ -175,8 +179,10 @@
 					-->
 					<section>
 						<h2>&quot;Modular&quot; JavaScript</h2>
-						<h3 class="fragment"><span class="fancy">or</span></h3>
-						<h4 class="fragment">A thing you're already doing.<br />...even though you might not know it, yet.</h4>
+						<div class="fragment">
+							<h3 class="fancy">or</h3>
+							<h4>A thing you're already doing.<br />...even though you might not know it, yet.</h4>
+						</div>
 					</section>
 					<!--
 						[3.2] - Loading JavaScript as "Modules"
@@ -184,7 +190,7 @@
 					<section>
 						<h3>Loading JavaScript as &quot;Modules&quot;</h3>
 						<pre>
-							<code class="html" data-trim>
+							<code class="html" data-trim spellcheck="false">
 &lt;script src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
 							</code>
@@ -195,8 +201,10 @@
 					-->
 					<section>
 						<h2>&quot;Dependency&quot; Management</h2>
-						<h3 class="fragment"><span class="fancy">or</span></h3>
-						<h4 class="fragment">A thing you're already doing.<br />even though you might not know it, yet.</h4>
+						<div class="fragment">
+							<h3 class="fancy">or</h3>
+							<h4>A thing you're already doing.<br />even though you might not know it, yet.</h4>
+						</div>
 					</section>
 					<!--
 						[3.4] - Loading JavaScript With "Dependencies"
@@ -204,7 +212,7 @@
 					<section>
 						<h3>Loading JavaScript With &quot;Dependencies&quot;</h3>
 						<pre>
-							<code class="html" data-trim>
+							<code class="html" data-trim spellcheck="false">
 &lt;script src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
 							</code>
@@ -215,10 +223,12 @@
 					-->
 					<section>
 						<h2>AMD</h2>
-						<h3 class="fragment"><span class="fancy">or</span></h3>
-						<h4 class="fragment">
-							Asynchronous Module Definition
-						</h4>
+						<div class="fragment">
+							<h3 class="fancy">Better Known As</h3>
+							<h4>
+								Asynchronous Module Definition
+							</h4>
+						</div>
 					</section>
 					<!--
 						[3.6] - async
@@ -227,7 +237,7 @@
 						<h2><code>async</code>hronous?</h2>
 						<h3 class="fragment roll-in">That's baked in, bro!</h3>
 						<pre class="fragment">
-							<code class="html" data-trim>
+							<code class="html" data-trim spellcheck="false">
 &lt;script src=&quot;scripts/jquery.min.js&quot; async&gt;&lt;/script&gt;
 &lt;script src=&quot;scripts/main.js&quot; async&gt;&lt;/script&gt;
 							</code>
@@ -320,7 +330,7 @@
 						<h3>Your Application <code>index.html</code></h3>
 						<h3 class="fancy">The Old Way</h3>
 						<pre>
-							<code class="html" data-trim contenteditable>
+							<code class="html" data-trim contenteditable spellcheck="false">
 &lt;!doctype html&gt;
 &lt;html&gt;
 	&lt;head&gt;
@@ -350,7 +360,7 @@
 						<h3>Your Application <code>index.html</code></h3>
 						<h3 class="fancy">With RequireJS Included</h3>
 						<pre>
-							<code class="html" data-trim contenteditable>
+							<code class="html" data-trim contenteditable spellcheck="false">
 &lt;!doctype html&gt;
 &lt;html&gt;
 	&lt;head&gt;
@@ -394,7 +404,7 @@
 					<section data-transition="fade">
 						<h3><code>scripts/app.js</code></h3>
 						<pre>
-							<code class="javascript" data-trim>
+							<code class="javascript" data-trim spellcheck="false">
 require(["lib/jquery"], function($){
 	$(function(){
 		// Application Logic Here
@@ -413,7 +423,7 @@ require(["lib/jquery"], function($){
 					<section data-transition="fade">
 						<h2>Adding More Dependencies</h2>
 						<pre>
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 require(["lib/jquery"], function($){
 	$(function(){
 		// Application Logic Here
@@ -438,10 +448,10 @@ require(["lib/jquery"], function($){
 					-->
 					<section>
 						<h3><code>define()</code> vs. <code>require()</code></h3>
-						<ul>
+						<ul>Define defines code, require requires code to run.
 							<li class="fragment">Both take the same arguments in the same order: dependencies, then code.</li>
-							<li class="fragment"><code>require()</code> executes encapsulated code immediately.</li>
-							<li class="fragment"><code>define()</code> stores encapsulated code as a module that is executed by a <code>require()</code> statement.</li>
+							<li class="fragment"><code>define()</code> defines code.</li>
+							<li class="fragment"><code>require()</code> requires code to run.</li>
 						</ul>
 					</section>
 					<!--
@@ -450,7 +460,7 @@ require(["lib/jquery"], function($){
 					<section data-transition="fade">
 						<h3><code>scripts/jquery-stuff.js</code></h3>
 						<pre>
-							<code class="javascript" data-trim>
+							<code class="javascript" data-trim spellcheck="false">
 define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
 	$(function(){
 		// Application Logic Here
@@ -459,7 +469,7 @@ define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
 							</code>
 						</pre>
 						<aside class="notes">
-							- Create a new file called <code>jquery-stuff.js</code>
+							- Create a new file called <code>jquery-stuff.js</code><br />
 							- This code is not immediately executed. <code>require()</code> call is needed in <code>app.js</code>
 						</aside>
 					</section>
@@ -469,7 +479,7 @@ define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
 					<section data-transition="fade">
 						<h3><code>scripts/app.js</code></h3>
 						<pre>
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 require(["lib/jquery"], function($){
 	$(function(){
 		// Application Logic Here
@@ -489,7 +499,7 @@ require(["lib/jquery"], function($){
 						<h3>What if my Module has no Dependencies?</h3>
 						<h4 class="fragment roll-in">Omit Them!</h4>
 						<pre class="fragment">
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 // I'm an adult!
 define(function(){
 	// Your wholly self-sufficient and independent code goes here.
@@ -520,8 +530,10 @@ define(function(){
 				-->
 				<section>
 					<h2>Making it Manageable</h2>
-					<h3 class="fancy fragment">or</h3>
-					<h4 class="fragment"><code>requirejs.config()</code> is your friend.</h4>
+					<div class="fragment">
+						<h3 class="fancy">or</h3>
+						<h4><code>requirejs.config()</code> is your friend.</h4>
+					</div>
 					<aside class="notes">
 						- <code>requirejs.config()</code> takes an object with configuration key/value pairs.
 					</aside>
@@ -532,14 +544,14 @@ define(function(){
 				<section data-transition="fade">
 					<h2><code>baseUrl</code></h2>
 					<pre>
-						<code class="html" data-trim>
+						<code class="html" data-trim spellcheck="false">
 &lt;script src=&quot;scripts/require.js&quot; data-main=&quot;scripts/app&quot;&gt;&lt;/script&gt;
 						</code>
 					</pre>
 					<div class="fragment">
 						<h4><code>scripts/app.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim>
+							<code class="javascript" data-trim spellcheck="false">
 // Configuration Settings
 requirejs.config({
 	"baseUrl": "scripts/some/other/path"
@@ -559,7 +571,7 @@ requirejs.config({
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 // Configuration Settings
 requirejs.config({
 	"paths":{
@@ -570,7 +582,7 @@ requirejs.config({
 							</code>
 						</pre>
 						<aside class="notes">
-							- Add the <code>&quot;jquery-stuff&quot;: &quot;lib/jquery-stuff&quot;</code> name/value pair to illustrate how to map modules.
+							- Add the <code>&quot;jquery-stuff&quot;: &quot;lib/jquery-stuff&quot;</code> name/value pair to illustrate how to map modules.<br />
 							- Explain how module names can be remapped to friendlier strings (e.g., <code>&quot;jquery&quot;</code> instead of <code>&quot;lib/jquery.min&quot;</code><br />
 						</aside>
 					</section>
@@ -581,7 +593,7 @@ requirejs.config({
 						<h4>Referencing Dependencies Defined in <code>paths</code></h4>
 						<h4><code>scripts/jquery-stuff.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 define(["lib/jquery.min", "lib/modernizr.min"], function($, Modernizr){
 	$(function(){
 		// Application Logic Here
@@ -592,18 +604,20 @@ define(["lib/jquery.min", "lib/modernizr.min"], function($, Modernizr){
 						<div class="fragment">
 							<h4><code>scripts/app.js</code></h4>
 							<pre>
-								<code class="javascript" data-trim>
-/* requirejs.config() code... */
+								<code class="javascript" data-trim spellcheck="false">
+/* Prior requirejs.config() code... */
 
 // Execute code in jquery-stuff.js:
-require(["jquery-stuff"]);
+require(["lib/jquery-stuff"]);
 								</code>
 							</pre>
 						</div>
 						<aside class="notes">
-							- <code>jquery-stuff.js</code>: Change <code>&quot;lib/modernizr&quot;</code> to <code>&quot;modernizr&quot;</code><br />
-							- <code>jquery-stuff.js</code>: Change <code>&quot;lib/jquery&quot;</code> to <code>&quot;jquery&quot;</code><br />
-							- <code>app.js</code>:  Change <code>&quot;lib/jquery&quot;</code> to <code>&quot;jquery&quot;</code><br />
+							<b><code>jquery-stuff.js</code>:</b><br />
+							- Change <code>&quot;lib/modernizr&quot;</code> to <code>&quot;modernizr&quot;</code><br />
+							- Change <code>&quot;lib/jquery&quot;</code> to <code>&quot;jquery&quot;</code><br />
+							<b><code>app.js</code>:</b><br />
+							- Change <code>&quot;lib/jquery-stuff&quot;</code> to <code>&quot;jquery-stuff&quot;</code>
 						</aside>
 					</section>
 					<!--
@@ -623,7 +637,7 @@ require(["jquery-stuff"]);
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 // Configuration Settings
 requirejs.config({
 	"paths":{
@@ -636,6 +650,7 @@ requirejs.config({
 						</pre>
 						<aside class="notes">
 							- Reiterate that CDN paths need to leave off the <code>.js</code> extension.<br />
+							- <b>Always leave the protocol off!</b>
 						</aside>
 					</section>
 					<!--
@@ -645,7 +660,7 @@ requirejs.config({
 						<h2>What About Fallbacks?</h2>
 						<div class="fragment">
 							<pre>
-								<code class="html" data-trim>
+								<code class="html" data-trim spellcheck="false">
 &lt;script src=&quot;//code.jquery.com/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;window.jQuery || document.write(&quot;&lt;script src=\&quot;scripts/lib/jquery.min.js\&quot;&gt;&lt;\/script&gt;&quot;);&lt;/script&gt;
 								</code>
@@ -660,7 +675,7 @@ requirejs.config({
 						<h2><code>paths</code></h2>
 						<h4><code>scripts/app.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 // Configuration Settings
 requirejs.config({
 	"paths":{
@@ -699,7 +714,7 @@ requirejs.config({
 					<section data-transition="fade">
 						<h2><code>deps</code></h2>
 						<pre>
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 // Configuration Settings
 requirejs.config({
 	"paths":{
@@ -729,7 +744,7 @@ requirejs.config({
 						<img src="images/kramer_confused.gif" />
 						<aside class="notes">
 							- Short answer: Yes we do. We don't have to use <code>deps.</code><br />
-							- But, it is a centralized way to ensure that we are loading the modules we need.
+							- But, it is a centralized way to ensure that we are loading the modules we need.<br />
 							- It can reduce the amount of clutter in our dependency arrays in our modules.
 						</aside>
 					</section>
@@ -746,7 +761,7 @@ requirejs.config({
 					<section>
 						<h2><code>exports</code></h2>
 						<pre>
-							<code class="javascript" data-trim contenteditable>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
 // Configuration Settings
 requirejs.config({
 	"paths":{
@@ -774,7 +789,7 @@ requirejs.config({
 						<h2>Omitting <code>exports</code>.
 						<h4>If you omit <code>exports</code>, <code>deps</code> is assumed:</h4>
 						<pre>
-							<code class="javascript" data-trim>
+							<code class="javascript" data-trim spellcheck="false">
 // Configuration Settings
 requirejs.config({
 	"paths":{
@@ -814,16 +829,16 @@ requirejs.config({
 					<section>
 						<h2>RequireJS</h2>
 						<h3>Optimizer</h3>
+						<aside class="notes">
+							- The optimizer is used to combine many modules into one file and minify it.
+						</aside>
 					</section>
 					<!--
 						[13.2] - When to Optimize
 					-->
 					<section>
 						<h3>When is Optimization Useful?</h3>
-						<ul>
-							<li class="fragment">When you have many modules.</li>
-							<li class="fragment">When you want to cut down on HTTP requests.</li>
-						</ul>
+						<h4>Any Time Minification/Combination Is</h4>
 					</section>
 					<!--
 						[13.3] - Installation
@@ -832,15 +847,15 @@ requirejs.config({
 						<h2>Installation</h2>
 						<h3><code>Node.js</code></h3>
 						<pre>
-							<code class="shell" data-trim>
+							<code class="shell" data-trim spellcheck="false">
 > npm install -g requirejs
 							</code>
 						</pre>
 						<div class="fragment">
 							<h4>Can also be run with:</h4>
 							<ul>
-								<li>Gulp</li>
-								<li>Java with Rhino</li>
+								<li>Grunt or Gulp</li>
+								<li>Rhino</li>
 								<li>Your Browser</li>
 							</ul>
 						</div>
@@ -852,7 +867,7 @@ requirejs.config({
 						<h3>Setting Up a Build Profile</h3>
 						<h4><code>build.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim>
+							<code class="javascript" data-trim spellcheck="false">
 ({
 	"baseUrl": "scripts",
 	"paths":{
@@ -878,13 +893,13 @@ requirejs.config({
 					<section>
 						<h3>Building on the Command Line</h3>
 						<pre>
-							<code class="shell" data-trim>
+							<code class="shell" data-trim spellcheck="false">
 > r.js -o build.js
 							</code>
 						</pre>
 						<aside class="notes">
 							- This command will produce a minified single file.<br />
-							- Note
+							- r.js can also be used to minify CSS.
 						</aside>
 					</section>
 					<!--
@@ -906,6 +921,25 @@ requirejs.config({
 					<section>
 						<h2>Profit!</h2>
 						<img src="images/profit.gif" />
+						<aside class="notes">
+							- Mention that build.js config file can be deleted since it is all contained in the Gruntfile now.
+						</aside>
+					</section>
+					<!--
+						[13.8] - CDN Warning!
+					-->
+					<section>
+						<h3>Warning for CDN Users!</h3>
+						<img src="images/newman.gif" />
+						<aside class="notes">
+							- The optimizer does not deal well with CDN paths!
+						</aside>
+					</section>
+					<!--
+						[13.9] - How to Accommodate for CDN Paths
+					-->
+					<section>
+
 					</section>
 				</section>
 				<!--
@@ -913,7 +947,7 @@ requirejs.config({
 				-->
 				<section>
 					<h2>RequireJS in The Wild</h2>
-					<img src="images/honey_badger.gif" />
+					<img src="images/the_devils.gif" />
 				</section>
 				<!--
 					[15.0] - Alternatives
@@ -928,7 +962,8 @@ requirejs.config({
 						<li>LABjs (<a href="http://labjs.com">labjs.com</a> - No longer maintained, but use is supported and encouraged.)</li>
 					</ul>
 					<aside class="notes">
-						- Caution people that a lot of what Google yields are deprecated/unmaintained solutions (e.g., LABjs).
+						- Caution people that a lot of what Google yields are deprecated/unmaintained solutions (e.g., LABjs).<br />
+						- Acknowledge missed topics: Unit testing, debugging, et cetera.
 					</aside>
 				</section>
 				<!--
@@ -940,7 +975,6 @@ requirejs.config({
 					<h3 class="fancy">-j</h3>
 				</section>
 				<aside class="notes">
-					- Acknowledge missed topics: Unit testing, debugging, et cetera.
 					- Prompt for Questions.
 				</aside>
 			</div>
