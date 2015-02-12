@@ -12,7 +12,6 @@
 		<link type="text/css" rel="stylesheet" href="css/codecamp.css" />
 		<link type="text/css" rel="stylesheet" href="lib/css/zenburn.css" />
 		<link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Clicker+Script" />
-		<link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Great+Vibes" />
 		<script>var link=document.createElement("link");link.rel='stylesheet';link.type='text/css';link.href=window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' :'css/print/paper.css';document.getElementsByTagName('head')[0].appendChild(link);</script>
 	</head>
 	<body>
@@ -27,7 +26,7 @@
 					[2.2] - A Simpler and More Innocent Time
 					[2.3] - Humble Beginnings
 					[2.4] - Minor Improvements
-					[2.5] - IE6 Feels Bad, Man
+					[2.5] - IE6: SERENITY NOW!
 					[2.6] - We've Come a Long, Long Way
 			[3.0] - AMD
 					[3.1] - "Modular" JavaScript"
@@ -54,7 +53,7 @@
 					[7.4] - define() vs. require()
 					[7.5] - Defining a Module with define()
 					[7.6] - Calling Modules Defined With define()
-					[7.7] - On Further Abstraction
+					[7.7] - Modules Without Dependencies
 					[7.8] - On Further Abstraction
 			[8.0] - requirejs.config
 			[9.0] - baseUrl
@@ -83,7 +82,9 @@
 					[13.8] - CDN Warning
 					[13.9] - How to Accommodate for CDN Paths
 			[14.0] - In The Wild
-			[15.0] - Alternatives
+			[15.0] - Alternatives and Resources
+					[15.1] - Alternatives
+					[15.2] - Resources
 			[16.0] - The End
 		-->
 		<div class="reveal">
@@ -153,11 +154,11 @@
 						</aside>
 					</section>
 					<!--
-						[2.5] - IE6 Feels Bad, Man
+						[2.5] - IE6: SERENITY NOW!
 					-->
 					<section>
 						<h3>Coding for IE6 Compatibility...</h3>
-						<img class="fragment" src="images/feelsbadman.jpg" />
+						<img class="fragment" src="images/serenity_now.gif" />
 					</section>
 					<!--
 						[2.6] - We've Come a Long, Long Way
@@ -448,7 +449,7 @@ require(["lib/jquery"], function($){
 					-->
 					<section>
 						<h3><code>define()</code> vs. <code>require()</code></h3>
-						<ul>Define defines code, require requires code to run.
+						<ul>
 							<li class="fragment">Both take the same arguments in the same order: dependencies, then code.</li>
 							<li class="fragment"><code>define()</code> defines code.</li>
 							<li class="fragment"><code>require()</code> requires code to run.</li>
@@ -703,7 +704,6 @@ requirejs.config({
 					-->
 					<section>
 						<h2><code>shim</code></h2>
-						<img src="images/shims.jpg" />
 						<aside class="notes">
 							- <code>shim</code> is a way to centralize our dependencies.
 						</aside>
@@ -810,7 +810,7 @@ requirejs.config({
 				-->
 				<section>
 					<h3>Esoteric Config Options</h3>
-					<h4 class="fancy">An incomplete list:</h4>
+					<h4 class="fancy">An Incomplete List:</h4>
 					<ul>
 						<li class="fragment"><code>bundles</code>: Maps many modules to a single ID.</li>
 						<li class="fragment"><code>config</code>: Specify options in the module's namespace (e.g., API keys, version numbers, other module-specific settings.)</li>
@@ -838,14 +838,14 @@ requirejs.config({
 					-->
 					<section>
 						<h3>When is Optimization Useful?</h3>
-						<h4>Any Time Minification/Combination Is</h4>
+						<h4 class="fragment">Any Time That Minification/Bundling Is.</h4>
 					</section>
 					<!--
 						[13.3] - Installation
 					-->
 					<section>
 						<h2>Installation</h2>
-						<h3><code>Node.js</code></h3>
+						<h3>With <code>npm</code></h3>
 						<pre>
 							<code class="shell" data-trim spellcheck="false">
 > npm install -g requirejs
@@ -932,14 +932,32 @@ requirejs.config({
 						<h3>Warning for CDN Users!</h3>
 						<img src="images/newman.gif" />
 						<aside class="notes">
-							- The optimizer does not deal well with CDN paths!
+							- The optimizer does not deal with CDN paths!<br />
+							- Explain that the optimizer is unable to parse HTTP resources and bring them in.http://www.networksolutions.com/img/graphics/homepages/new-tlds/hero-bg-01.jpg
 						</aside>
 					</section>
 					<!--
 						[13.9] - How to Accommodate for CDN Paths
 					-->
 					<section>
-
+						<h3>Accounting for CDN Paths</h3>
+						<pre>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
+({
+	"baseUrl": "scripts",
+	"paths":{
+		"jquery": "//code.jquery.com/jquery-1.11.2.min",
+		"modernizr": "lib/modernizr.min",
+		"jquery-stuff": "lib/jquery-stuff"
+	},
+	"name": "app",
+	"out": "scripts/app.built.js"
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Change the <code>&quot;paths&quot;</code> value for <code>&quot;jquery&quot;</code> to <code>&quot;empty:&quot;</code>
+						</aside>
 					</section>
 				</section>
 				<!--
@@ -950,29 +968,48 @@ requirejs.config({
 					<img src="images/the_devils.gif" />
 				</section>
 				<!--
-					[15.0] - Alternatives
+					[15.0] - Alternatives and Resources
 				-->
 				<section>
-					<h3>Don't like RequireJS, but like the idea of employing modular development?</h2>
-					<h4>There are alternatives:</h4>
-					<ul>
-						<li>Browserify: (<a href="http://www.browserify.org">browserify.org</a>)</li>
-						<li>curl.js/RaveJS: (<a href="https://github.com/RaveJS">github.com/RaveJS</a>)</li>
-						<li>modulejs (<a href="http://larsjung.de/modulejs">larsjung.de/modulejs</a>)</li>
-						<li>LABjs (<a href="http://labjs.com">labjs.com</a> - No longer maintained, but use is supported and encouraged.)</li>
-					</ul>
-					<aside class="notes">
-						- Caution people that a lot of what Google yields are deprecated/unmaintained solutions (e.g., LABjs).<br />
-						- Acknowledge missed topics: Unit testing, debugging, et cetera.
-					</aside>
+					<!--
+						[15.1] - Alternatives
+					-->
+					<section>
+						<h3>Don't like RequireJS, but like the idea of employing modular development?</h3>
+						<h4>There are alternatives:</h4>
+						<ul>
+							<li>Browserify: <a href="http://www.browserify.org">browserify.org</a></li>
+							<li>curl.js/RaveJS: <a href="https://github.com/RaveJS">github.com/RaveJS</a></li>
+							<li>modulejs: <a href="http://larsjung.de/modulejs">larsjung.de/modulejs</a></li>
+							<li>LABjs: <a href="http://labjs.com">labjs.com</a> - No longer maintained, but use is supported and encouraged.</li>
+						</ul>
+						<aside class="notes">
+							- Caution people that a lot of what Google yields are deprecated/unmaintained solutions (e.g., LABjs).<br />
+							- Acknowledge missed topics: Unit testing, debugging, et cetera.
+						</aside>
+					</section>
+					<!--
+						[15.2] - Resources
+					-->
+					<section>
+						<h3>Resources</h3>
+						<ul>
+							<li>RequireJS: <a href="http://requirejs.org">requirejs.org</a></li>
+							<li>Grunt: <a href="http://gruntjs.com">gruntjs.com</a></li>
+							<li>reveal.js: <a href="http://lab.hakim.se/reveal-js">reveal.js</a></li>
+							<li>This presentation: <a href="https://github.com/malchata/requirejs-presentation">github.com/malchata/requirejs-presentation</a></li>
+						</ul>
+					</section>
 				</section>
 				<!--
 					[16.0] - The End
 				-->
 				<section>
-					<h3 class="fancy" style="font-size: 500%;">Fin.</h3>
+					<h2>Get Busy!</h2>
+					<div>
+						<img src="images/sausages.gif" />
+					</div>
 					<h3 class="fancy">Thank You!</h3>
-					<h3 class="fancy">-j</h3>
 				</section>
 				<aside class="notes">
 					- Prompt for Questions.
@@ -981,6 +1018,6 @@ requirejs.config({
 		</div>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-		<script>Reveal.initialize({controls:true,progress:false,history:true,center:true,transition:"slide",dependencies:[{src:'lib/js/classList.js',condition:function(){return !document.body.classList;}},{src:'plugin/markdown/marked.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/markdown/markdown.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/highlight/highlight.js',async:true,condition:function(){return !!document.querySelector('pre code');},callback:function(){hljs.initHighlightingOnLoad();}},{src:'plugin/zoom-js/zoom.js',async:true},{src:'plugin/notes/notes.js',async:true}]});</script>
+		<script>Reveal.initialize({controls:true,progress:false,history:true,center:true,transition:"slide",dependencies:[{src:'lib/js/classList.js',condition:function(){return !document.body.classList;}},{src:'plugin/markdown/marked.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/markdown/markdown.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/highlight/highlight.js',async:true,condition:function(){return !!document.querySelector('pre code');},callback:function(){hljs.configure({tabReplace:'    '});hljs.initHighlightingOnLoad();}},{src:'plugin/zoom-js/zoom.js',async:true},{src:'plugin/notes/notes.js',async:true}]});</script>
 	</body>
 </html>
