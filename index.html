@@ -193,7 +193,7 @@
 					<section>
 						<h3>Loading JavaScript as &quot;Modules&quot;</h3>
 						<pre>
-							<code class="html" data-trim spellcheck="false">
+							<code class="html" data-trim spellcheck="false" contenteditable>
 &lt;script src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
 							</code>
@@ -215,7 +215,7 @@
 					<section>
 						<h3>Loading JavaScript With &quot;Dependencies&quot;</h3>
 						<pre>
-							<code class="html" data-trim spellcheck="false">
+							<code class="html" data-trim spellcheck="false" contenteditable>
 &lt;script src=&quot;scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
 							</code>
@@ -240,7 +240,7 @@
 						<h2><code>async</code>hronous?</h2>
 						<h3 class="fragment roll-in">That's baked in, bro!</h3>
 						<pre class="fragment">
-							<code class="html" data-trim spellcheck="false">
+							<code class="html" data-trim spellcheck="false"  contenteditable>
 &lt;script src=&quot;scripts/jquery.min.js&quot; async&gt;&lt;/script&gt;
 &lt;script src=&quot;scripts/main.js&quot; async&gt;&lt;/script&gt;
 							</code>
@@ -407,7 +407,7 @@
 					<section data-transition="fade">
 						<h3><code>scripts/app.js</code></h3>
 						<pre>
-							<code class="javascript" data-trim spellcheck="false">
+							<code class="javascript" data-trim spellcheck="false" contenteditable>
 require(["lib/jquery"], function($){
 	$(function(){
 		// Application Logic Here
@@ -463,7 +463,7 @@ require(["lib/jquery"], function($){
 					<section data-transition="fade">
 						<h3><code>scripts/jquery-stuff.js</code></h3>
 						<pre>
-							<code class="javascript" data-trim spellcheck="false">
+							<code class="javascript" data-trim spellcheck="false" contenteditable>
 define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
 	$(function(){
 		// Application Logic Here
@@ -547,14 +547,14 @@ define(function(){
 				<section data-transition="fade">
 					<h2><code>baseUrl</code></h2>
 					<pre>
-						<code class="html" data-trim spellcheck="false">
+						<code class="html" data-trim spellcheck="false" contenteditable>
 &lt;script src=&quot;scripts/require.js&quot; data-main=&quot;scripts/app&quot;&gt;&lt;/script&gt;
 						</code>
 					</pre>
 					<div class="fragment">
 						<h4><code>scripts/app.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim spellcheck="false">
+							<code class="javascript" data-trim spellcheck="false" contenteditable>
 // Configuration Settings
 requirejs.config({
 	"baseUrl": "scripts/some/other/path"
@@ -607,7 +607,7 @@ define(["lib/jquery.min", "lib/modernizr.min"], function($, Modernizr){
 						<div class="fragment">
 							<h4><code>scripts/app.js</code></h4>
 							<pre>
-								<code class="javascript" data-trim spellcheck="false">
+								<code class="javascript" data-trim spellcheck="false" contenteditable>
 /* Prior requirejs.config() code... */
 
 // Execute code in jquery-stuff.js:
@@ -663,7 +663,7 @@ requirejs.config({
 						<h2>What About Fallbacks?</h2>
 						<div class="fragment">
 							<pre>
-								<code class="html" data-trim spellcheck="false">
+								<code class="html" data-trim spellcheck="false" contenteditable>
 &lt;script src=&quot;//code.jquery.com/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;window.jQuery || document.write(&quot;&lt;script src=\&quot;scripts/lib/jquery.min.js\&quot;&gt;&lt;\/script&gt;&quot;);&lt;/script&gt;
 								</code>
@@ -791,7 +791,7 @@ requirejs.config({
 						<h2>Omitting <code>exports</code>.
 						<h4>If you omit <code>exports</code>, <code>deps</code> is assumed:</h4>
 						<pre>
-							<code class="javascript" data-trim spellcheck="false">
+							<code class="javascript" data-trim spellcheck="false" contenteditable>
 // Configuration Settings
 requirejs.config({
 	"paths":{
@@ -849,7 +849,7 @@ requirejs.config({
 						<h2>Installation</h2>
 						<h3>With <code>npm</code></h3>
 						<pre>
-							<code class="shell" data-trim spellcheck="false">
+							<code class="shell" data-trim spellcheck="false" contenteditable>
 > npm install -g requirejs
 							</code>
 						</pre>
@@ -869,7 +869,7 @@ requirejs.config({
 						<h3>Setting Up a Build Profile</h3>
 						<h4><code>build.js</code></h4>
 						<pre>
-							<code class="javascript" data-trim spellcheck="false">
+							<code class="javascript" data-trim spellcheck="false" contenteditable>
 ({
 	"baseUrl": "scripts",
 	"paths":{
@@ -895,7 +895,7 @@ requirejs.config({
 					<section>
 						<h3>Building on the Command Line</h3>
 						<pre>
-							<code class="shell" data-trim spellcheck="false">
+							<code class="shell" data-trim spellcheck="false" contenteditable>
 > r.js -o build.js
 							</code>
 						</pre>
@@ -935,7 +935,7 @@ requirejs.config({
 						<img src="images/newman.gif" />
 						<aside class="notes">
 							- The optimizer does not deal with CDN paths!<br />
-							- Explain that the optimizer is unable to parse HTTP resources and bring them in.http://www.networksolutions.com/img/graphics/homepages/new-tlds/hero-bg-01.jpg
+							- Explain that the optimizer is unable to parse HTTP resources and bring them in.
 						</aside>
 					</section>
 					<!--
