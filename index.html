@@ -81,6 +81,8 @@
 					[13.7] - Profit!
 					[13.8] - CDN Warning
 					[13.9] - How to Accommodate for CDN Paths
+					[13.10] - Excluding Modules
+					[13.11] - When Exclusions Are Useful
 			[14.0] - In The Wild
 			[15.0] - Alternatives and Resources
 					[15.1] - Alternatives
@@ -959,6 +961,40 @@ requirejs.config({
 							- Change the <code>&quot;paths&quot;</code> value for <code>&quot;jquery&quot;</code> to <code>&quot;empty:&quot;</code>
 						</aside>
 					</section>
+					<!--
+						[13.10] - Excluding Modules
+					-->
+					<section>
+						<h3>How to Exclude Modules</h3>
+						<pre>
+							<code class="javascript" data-trim contenteditable spellcheck="false">
+({
+	"baseUrl": "scripts",
+	"paths":{
+		"jquery": "empty:",
+		"modernizr": "lib/modernizr.min",
+		"jquery-stuff": "lib/jquery-stuff"
+	},
+	"name": "app",
+	"out": "scripts/app.built.js"
+});
+							</code>
+						</pre>
+						<aside class="notes">
+							- Add the key/value pair <code>&quot;exclude&quot;: [&quot;jquery-stuff&quot;]</code>.<br />
+							- Explain how this excludes the module from the build, but does not break the application, because the optimized outfile will load the module from its original module definition.
+						</aside>
+					</section>
+					<!--
+						[13.11] - When Exclusions Are Useful
+					-->
+					<section>
+						<h3>When Exclusions Are Useful</h3>
+						<ul>
+							<li class="fragment">For lazy loading certain modules.</li>
+							<li class="fragment">For debugging.</li>
+						</ul>
+					</section>
 				</section>
 				<!--
 					[14.0] - In The Wild
@@ -1017,7 +1053,8 @@ requirejs.config({
 			</div>
 		</div>
 		<script src="lib/js/head.min.js"></script>
+		<script src="plugin/jquery/jquery.min.js"></script>
 		<script src="js/reveal.js"></script>
-		<script>Reveal.initialize({controls:true,progress:false,history:true,center:true,transition:"slide",dependencies:[{src:'lib/js/classList.js',condition:function(){return !document.body.classList;}},{src:'plugin/markdown/marked.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/markdown/markdown.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/highlight/highlight.js',async:true,condition:function(){return !!document.querySelector('pre code');},callback:function(){hljs.configure({tabReplace:'    '});hljs.initHighlightingOnLoad();}},{src:'plugin/zoom-js/zoom.js',async:true},{src:'plugin/notes/notes.js',async:true}]});</script>
+		<script>Reveal.initialize({controls:true,progress:false,history:true,center:true,transition:"slide",dependencies:[{src:'lib/js/classList.js',condition:function(){return !document.body.classList;}},{src:'plugin/markdown/marked.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/markdown/markdown.js',condition:function(){return !!document.querySelector('[data-markdown]');}},{src:'plugin/highlight/highlight.js',async:true,condition:function(){return !!document.querySelector('pre code');},callback:function(){hljs.initHighlightingOnLoad();}},{src:'plugin/zoom-js/zoom.js',async:true},{src:'plugin/notes/notes.js',async:true}]});jQuery(function(){$("code[contenteditable]").keydown(function(e){if(e.which===9){e.preventDefault();}});});</script>
 	</body>
 </html>
