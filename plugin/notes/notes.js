@@ -9,12 +9,13 @@
  * 3. This window proceeds to send the current presentation state
  *    to the notes window
  */
-var RevealNotes = (function() {
-
+RevealNotes = (function() {
+	self = this;
+	self.notesPopup;
 	function openNotes() {
 		var jsFileLocation = document.querySelector('script[src$="notes.js"]').src;  // this js file path
 		jsFileLocation = jsFileLocation.replace(/notes\.js(\?.*)?$/, '');   // the js folder path
-		var notesPopup = window.open( jsFileLocation + 'notes.html', 'reveal.js - Notes', 'width=1100,height=700' );
+		self.notesPopup = window.open( jsFileLocation + 'notes.html', 'reveal.js - Notes', 'width=1100,height=700' );
 
 		/**
 		 * Connect to the notes window through a postmessage handshake.
@@ -25,7 +26,7 @@ var RevealNotes = (function() {
 		function connect() {
 			// Keep trying to connect until we get a 'connected' message back
 			var connectInterval = setInterval( function() {
-				notesPopup.postMessage( JSON.stringify( {
+				self.notesPopup.postMessage( JSON.stringify( {
 					namespace: 'reveal-notes',
 					type: 'connect',
 					url: window.location.protocol + '//' + window.location.host + window.location.pathname,
@@ -69,7 +70,7 @@ var RevealNotes = (function() {
 				messageData.markdown = typeof notesElement.getAttribute( 'data-markdown' ) === 'string';
 			}
 
-			notesPopup.postMessage( JSON.stringify( messageData ), '*' );
+			self.notesPopup.postMessage( JSON.stringify( messageData ), '*' );
 
 		}
 
@@ -117,6 +118,6 @@ var RevealNotes = (function() {
 
 	}
 
-	return { open: openNotes };
+	return { open: openNotes, notesWindow: self.notesPopup };
 
 })();

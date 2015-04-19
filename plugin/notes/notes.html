@@ -173,6 +173,7 @@
 		</div>
 
 		<script src="../../plugin/markdown/marked.js"></script>
+		<script src="../../plugin/jquery/jquery.min.js"></script>
 		<script>
 
 			(function() {
@@ -215,7 +216,7 @@
 				 * connection.
 				 */
 				function handleConnectMessage( data ) {
-
+					self = this;
 					if( connected === false ) {
 						connected = true;
 
@@ -223,6 +224,17 @@
 						setupKeyboard();
 						setupNotes();
 						setupTimer();
+
+						// Wait for the iframe to load
+						jQuery("#current-slide iframe").load(function(){
+							self.contents = jQuery(this).contents();
+							self.contents.on("keyup", "code[contenteditable]", function(){
+								window.opener.postMessage(JSON.stringify({
+									codeElementId: $(this).attr("id"),
+									codeElementHtml: $(this).html()
+								}), "*");
+							});
+						});
 					}
 
 				}
