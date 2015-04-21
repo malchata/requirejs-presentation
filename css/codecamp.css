@@ -56,3 +56,24 @@ img.reduce
 	max-width: 50%;
 	height: auto;
 }
+
+img.introImage
+{
+	max-width: 45%;
+	float: left;
+	display: inline-block;
+}
+
+ul.floatedList
+{
+	float: left;
+	display: inline-block;
+	margin: 1em 0 0 2em;
+	max-width: 35%;
+	font-size: 0.75em;
+}
+
+ul.floatedList li
+{
+	margin-bottom: 0.25em;
+}
