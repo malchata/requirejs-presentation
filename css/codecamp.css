@@ -75,6 +75,11 @@ img.reduce
 	height: auto;
 }
 
+h4.fancy.reduce
+{
+	font-size: 0.875em;
+}
+
 img.introImage
 {
 	max-width: 45%;
