@@ -41,7 +41,6 @@
 			[4.0] - RequireJS Lead-in
 					[4.1] - Introducing RequireJS
 					[4.2] - Another Library?!
-					[4.3] - Kramer Chug!
 			[5.0] - Folder Structure
 			[6.0] - Loading RequireJS
 					[6.1] - index.html Before
@@ -310,12 +309,6 @@
 							- Make a lead-in joke for the next slide.
 						</aside>
 					</section>
-					<!--
-						[4.3] - Kramer Chug!
-					-->
-					<section data-transition="fade">
-						<img src="images/kramer_beer_chug.gif" />
-					</section>
 				</section>
 				<!--
 					[5.0] - Folder Structure
@@ -324,7 +317,7 @@
 					<h2>Folder Structure</h2>
 					<ul class="filesystem">
 						<li>
-							/webapp_root
+							/
 							<ul>
 								<li>index.html</li>
 								<li>scripts/</li>
@@ -367,7 +360,7 @@
 		&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/styles.css&quot; type=&quot;text/css&quot; /&gt;
 	&lt;/head&gt;
 	&lt;body&gt;
-		...
+		&lt;!--Application Code--&gt;
 		&lt;script src=&quot;scripts/jquery.js&quot;&gt;&lt;/script&gt;
 		&lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
 	&lt;/body&gt;
@@ -397,7 +390,7 @@
 		&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/styles.css&quot; type=&quot;text/css&quot; /&gt;
 	&lt;/head&gt;
 	&lt;body&gt;
-		...
+		&lt;!--Application Code--&gt;
 		&lt;script src=&quot;scripts/require.js&quot;&gt;&lt;/script&gt;
 	&lt;/body&gt;
 &lt;/html&gt;
@@ -484,7 +477,7 @@ require(["lib/jquery"], function($){
 						[7.5] - Defining a Module with define()
 					-->
 					<section data-transition="fade">
-						<h3><code>scripts/jquery-stuff.js</code></h3>
+						<h3><code>scripts/lib/jquery-stuff.js</code></h3>
 						<pre>
 							<code class="javascript" data-trim spellcheck="false" contenteditable id="n9vfq389qv3">
 define(["lib/jquery", "lib/modernizr"], function($, Modernizr){
@@ -617,7 +610,7 @@ requirejs.config({
 					-->
 					<section>
 						<h4>Referencing Dependencies Defined in <code>paths</code></h4>
-						<h4><code>scripts/jquery-stuff.js</code></h4>
+						<h4><code>scripts/lib/jquery-stuff.js</code></h4>
 						<pre>
 							<code class="javascript" data-trim contenteditable spellcheck="false" id="nf3n3qnd">
 define(["lib/jquery.min", "lib/modernizr.min"], function($, Modernizr){
@@ -863,7 +856,7 @@ requirejs.config({
 					-->
 					<section>
 						<h3>When is Optimization Useful?</h3>
-						<h4 class="fragment">Any Time That Minification/Bundling Is.</h4>
+						<h4 class="fragment">Any Time That Minification or Bundling Is.</h4>
 					</section>
 					<!--
 						[13.3] - Installation
@@ -1056,7 +1049,7 @@ requirejs.config({
 							<li>RequireJS: <a href="http://requirejs.org">requirejs.org</a></li>
 							<li>CommonJS: <a href="http://commonjs.org">commonjs.org</a></li>
 							<li>Grunt: <a href="http://gruntjs.com">gruntjs.com</a></li>
-							<li>reveal.js: <a href="http://lab.hakim.se/reveal-js">reveal.js</a></li>
+							<li>reveal.js: <a href="http://lab.hakim.se/reveal-js">lab.hakim.se/reveal-js</a></li>
 							<li>This talk: <a href="https://github.com/malchata/requirejs-presentation">github.com/malchata/requirejs-presentation</a></li>
 						</ul>
 					</section>
