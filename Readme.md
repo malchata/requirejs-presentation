@@ -40,8 +40,8 @@ This is a talk on RequireJS (http://requirejs.org), a JavaScript module loader a
 
 This presentation was given at the following dates and events:
 
-**02/14/2015**: General Mills Code Camp v4.0.
-**04/25/2015**: Twin Cities Code Camp Spring 2015.
+- **02/14/2015**: General Mills Code Camp v4.0.
+- **04/25/2015**: Twin Cities Code Camp Spring 2015.
 
 If you have questions about this talk, corrections, amendments, or if you are organizing an event or conference where you think this talk would fit in nicely, feel free to DM me on Twitter at [@malchata](http://twitter.com/malchata).  I welcome any and all feedback and questions!
 
